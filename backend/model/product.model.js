@@ -4,10 +4,11 @@ async function getProductByURLName(URLName) {
 
 async function createProduct(sellerId, URLName, name, description, price) {
   return {
-    _id: "12345678",
-    name: "product 1",
-    description: "Lorem ipsum",
-    price: 20.0,
+    _id: sellerId,
+    URLName: URLName,
+    name: name,
+    description: description,
+    price: price,
   };
 }
 
