@@ -6,7 +6,7 @@ productController = require("../controller/product.controller");
 
 router.get("/:product", productController.get);
 
-router.post("/:product", productController.post);
+router.post("/", productController.post);
 
 router.put("/:product", productController.put);
 
