@@ -15,7 +15,7 @@ async function updateProduct(id, URLName, name, description, price) {
   return true;
 }
 
-async function destroyProductByURLName(URLName) {
+async function destroyProduct(id) {
   return true;
 }
 
