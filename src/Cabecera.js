@@ -15,7 +15,7 @@ function Header() {
           <li className="login-link"><a href="#">Login</a></li>
           <li className="carrito">
             <a href="#">
-              <img src={CarritoCompras} alt="Carrito de compras" style={{ width: '20px', height: '20px' }} />
+              <img src={CarritoCompras} alt="Carrito de compras"/>
             </a>
           </li>
         </ul>
