@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 5000;
-import cors from "cors";
+const cors = require("cors");
 
 const { databaseURL, databaseName } = require("./db.connect");
 
