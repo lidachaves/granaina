@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 5000;
+import cors from "cors";
 
 const { databaseURL, databaseName } = require("./db.connect");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const mongoose = require("mongoose");
 
