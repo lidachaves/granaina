@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-const databaseURL = require("./db.connect");
+const { databaseURL, databaseName } = require("./db.connect");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(databaseURL)
+  .connect(databaseURL, { dbName: databaseName })
   .then(() => {
     console.log("Connected to the database.");
 
