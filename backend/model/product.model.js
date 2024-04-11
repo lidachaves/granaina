@@ -1,28 +1,23 @@
-async function getProductByURLName(URLName) {
-  return { name: "product 1", description: "Lorem ipsum", price: 20.0 };
-}
+const mongoose = require("mongoose");
 
-async function createProduct(sellerId, URLName, name, description, price) {
-  return {
-    _id: sellerId,
-    URLName: URLName,
-    name: name,
-    description: description,
-    price: price,
-  };
-}
+const productSchema = mongoose.Schema({
+  URLName: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+});
 
-async function updateProduct(id, URLName, name, description, price) {
-  return true;
-}
-
-async function destroyProduct(id) {
-  return true;
-}
-
-module.exports = {
-  getProductByURLName,
-  createProduct,
-  updateProduct,
-  destroyProduct,
-};
+const Product = mongoose.model("Product", productSchema);
+module.exports = { Product };

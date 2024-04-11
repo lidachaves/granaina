@@ -1,9 +1,9 @@
-const productModel = require("../model/product.model");
+const { Product } = require("../model/product.model");
 
 async function get(req, res) {
   try {
     const { product } = req.params;
-    const productInfo = await productModel.getProductByURLName(product);
+    const productInfo = await Product.find({ URLName: product });
     res.send(productInfo);
   } catch (e) {
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
@@ -12,16 +12,19 @@ async function get(req, res) {
 
 async function post(req, res) {
   try {
+    console.log(Product);
     const { URLName, name, description, price } = req.body;
-    const result = await productModel.createProduct(
-      0,
-      URLName,
-      name,
-      description,
-      price
-    );
+    const productArray = {
+      sellerId: 0,
+      URLName: URLName,
+      name: name,
+      description: description,
+      price: price,
+    };
+    const result = await Product.create(productArray);
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
 }
@@ -30,16 +33,17 @@ async function put(req, res) {
   try {
     const { product } = req.params;
     const { URLName, name, description, price } = req.body;
-    const productInfo = await productModel.getProductByURLName(product);
-    const result = await productModel.updateProduct(
-      productInfo._id,
-      URLName,
-      name,
-      description,
-      price
-    );
+    const productInfo = await Product.find({ URLName: product });
+    const productArray = {
+      URLName: URLName,
+      name: name,
+      description: description,
+      price: price,
+    };
+    const result = await Product.updateOne(productInfo._id, productArray);
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
 }
@@ -47,10 +51,10 @@ async function put(req, res) {
 async function destroy(req, res) {
   try {
     const { product } = req.params;
-    const productInfo = await productModel.getProductByURLName(product);
-    const result = await productModel.destroyProduct(productInfo._id);
+    const result = await Product.deleteOne({ URLName: product });
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
 }
