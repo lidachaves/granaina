@@ -25,9 +25,11 @@ mongoose
   });
 
 const product = require("./routes/product");
+const user = require("./routes/user");
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/api/", product);
+app.use("/api/p/", product);
+app.use("/api/u/", user);
