@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from './Cabecera'; // Importa el componente Cabecera, no el archivo CSS
-import ProductCard from './tarjeta.js';
+import Header from './Cabecera'; 
+import ProductCard from './COMPONENTES/tarjeta.js';
+import 'tailwindcss/tailwind.css';
 
 function App() {
   return (
