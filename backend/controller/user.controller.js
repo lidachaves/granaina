@@ -63,16 +63,15 @@ async function register(req, res) {
 
 async function put(req, res) {
   try {
-    const { product } = req.params;
-    const { username, name, email, password } = req.body;
-    const userInfo = await User.find({ URLName: product });
+    const { username, name, email } = req.body;
+    const user = req.user;
     const userArray = {
       username: username,
       name: name,
       email: email,
-      password: password,
+      password: user.password,
     };
-    const result = await User.updateOne(userInfo._id, userArray);
+    const result = await User.updateOne({ _id: user.id }, userArray);
     res.send(result);
   } catch (e) {
     console.log(e);
@@ -82,8 +81,8 @@ async function put(req, res) {
 
 async function destroy(req, res) {
   try {
-    const { username } = req.params;
-    const result = await User.deleteOne({ username: username });
+    const user = req.user;
+    const result = await User.deleteOne({ _id: user.id });
     res.send(result);
   } catch (e) {
     console.log(e);
