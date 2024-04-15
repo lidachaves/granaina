@@ -3,6 +3,7 @@ import Header from './Cabecera';
 import ProductCard from './COMPONENTES/tarjeta.js'; 
 import Login from './COMPONENTES/LOGIN.js'; 
 import 'tailwindcss/tailwind.css';
+import Footer from './COMPONENTES/footer.js';
 
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false); // Esta funcion es  para controlar la visibilidad del modal de inicio de sesión :)
@@ -22,7 +23,8 @@ function App() {
         <ProductCard />
       </div>
       {showLoginModal && <Login setShowLoginModal={setShowLoginModal} />} 
-    </div>
+      <Footer />
+    </div> 
   );
 }
 
