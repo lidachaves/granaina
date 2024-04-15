@@ -1,8 +1,8 @@
 import React from 'react';
-import CarritoCompras from './carrito.svg'; 
-import 'tailwindcss/tailwind.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+function Header({ setShowLoginModal }) { // Recibe la función setShowLoginModal como una prop
   return (
     <div className="bg-gray-800 py-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -13,8 +13,8 @@ function Header() {
             <li className="mr-4"><a href="#">Acerca de</a></li>
             <li className="mr-4"><a href="#">Productos</a></li>
             <li className="mr-4"><a href="#">Contacto</a></li>
-            <li className="mr-4"><a href="#">Login</a></li>
-            <li><a href="#"><img src={CarritoCompras} alt="Carrito de compras" className="w-6 h-6"/></a></li>
+            <li className="mr-4"><a href="#" onClick={() => setShowLoginModal(true)}><FontAwesomeIcon icon={faUser} className="w-6 h-6" /></a></li> {/* Agrega un manejo de evento onClick para abrir el modal de inicio de sesión */}
+            <li><a href="#"><FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" /></a></li>
           </ul>
         </nav>
       </div>
