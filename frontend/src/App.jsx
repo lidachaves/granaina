@@ -26,7 +26,7 @@ function App() {
     }
   }
 
-  fetchProducts()
+  // fetchProducts()
 
   return (
     <div className="App">
