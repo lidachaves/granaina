@@ -8,7 +8,7 @@ router.get("/:product", productController.get);
 
 router.post("/", productController.post);
 
-router.put("/:product", productController.put);
+router.patch("/:product", productController.put);
 
 router.delete("/:product", productController.destroy);
 
