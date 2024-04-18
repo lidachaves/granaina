@@ -10,16 +10,31 @@ import Banner1 from './COMPONENTES/banner1.jsx';
 
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false); // Esta funcion es  para controlar la visibilidad del modal de inicio de sesión :)
+  const [productsInfo, setProductsInfo] = useState(null)
 
-  const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
+  // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+      const json = await response.json()
+      if (response.ok) {
+        setProductsInfo(json)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  fetchProducts()
 
   return (
     <div className="App">
       <Header setShowLoginModal={setShowLoginModal} /> {/* Esta funcion que meti es para controlar el modal como una prop */}
       <Banner1 />
       <div className="flex flex-wrap justify-around mt-8">
-        {products ? products.map((product) => (
-          <ProductCard productInfo={product} />
+        {productsInfo ? productsInfo.map((product) => (
+          <ProductCard key={product._id} productInfo={product} />
         )) : 'No hay productos'}
 
       </div>

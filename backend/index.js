@@ -31,5 +31,5 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/api/p/", product);
-app.use("/api/u/", user);
+app.use("/api/products/", product);
+app.use("/api/users/", user);

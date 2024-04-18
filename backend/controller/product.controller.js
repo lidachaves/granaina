@@ -1,5 +1,14 @@
 const { Product } = require("../model/product.model");
 
+async function getAll(req, res) {
+  try {
+    const productInfo = await Product.find();
+    res.send(productInfo);
+  } catch (e) {
+    res.status(500).send(JSON.stringify({ message: "Internal server error" }));
+  }
+}
+
 async function get(req, res) {
   try {
     const { product } = req.params;
@@ -59,4 +68,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, post, put, destroy };
+module.exports = { getAll, get, post, put, destroy };
