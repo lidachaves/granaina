@@ -12,7 +12,7 @@ router.post("/", userController.register);
 
 router.post("/login", userController.login);
 
-router.put("/:username", [ensureAuth], userController.put);
+router.patch("/:username", [ensureAuth], userController.put);
 
 router.delete("/:username", [ensureAuth], userController.destroy);
 
