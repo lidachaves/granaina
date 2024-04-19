@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css';
 import Header from './Cabecera.jsx';
 import ProductCard from './COMPONENTES/tarjeta.jsx';
@@ -14,19 +14,20 @@ function App() {
 
   // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
 
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/products");
-      const json = await response.json()
-      if (response.ok) {
-        setProductsInfo(json)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/products");
+        const json = await response.json()
+        if (response.ok) {
+          setProductsInfo(json)
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
     }
-  }
-
-  // fetchProducts()
+    fetchData()
+  }, [])
 
   return (
     <div className="App">
