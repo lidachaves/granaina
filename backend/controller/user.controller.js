@@ -61,7 +61,7 @@ async function register(req, res) {
   }
 }
 
-async function put(req, res) {
+async function patch(req, res) {
   try {
     const { username, name, email } = req.body;
     const user = req.user;
@@ -90,4 +90,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, login, register, put, destroy };
+module.exports = { get, login, register, patch, destroy };
