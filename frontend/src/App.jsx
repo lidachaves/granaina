@@ -1,36 +1,38 @@
-import { useState } from 'react'
+// app.jsx
+import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Header from './Cabecera.jsx';
-import ProductCard from './COMPONENTES/tarjeta.jsx';
-import Login from './COMPONENTES/LOGIN.jsx';
-// import 'tailwindcss/tailwind.css';
-import Footer from './COMPONENTES/footer.jsx';
-import Banner1 from './COMPONENTES/banner1.jsx';
-
+import Header from './COMPONENTES/header.jsx';
+import Login from './COMPONENTES/LOGIN.jsx'; 
+import Carousel from './COMPONENTES/carousel.jsx';
+import Offer from './COMPONENTES/service.jsx'; 
 
 function App() {
-  const [showLoginModal, setShowLoginModal] = useState(false); // Esta funcion es  para controlar la visibilidad del modal de inicio de sesión :)
+  const [showLogin, setShowLogin] = useState(false);
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
+
+  // Aca defini las diapositivas para el Carousel
+  const slides = [
+    <div key="1">Slide 1</div>,
+    <div key="2">Slide 2</div>,
+    <div key="3">Slide 3</div>,
+  ];
 
   return (
-    <div className="App">
-      <Header setShowLoginModal={setShowLoginModal} /> {/* Esta funcion que meti es para controlar el modal como una prop */}
-      <Banner1 />
-      <div className="flex flex-wrap justify-around mt-8">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+    <Router>
+      <div className="App">
+        <Header toggleLogin={toggleLogin} />
+        {showLogin && <Login />}
+        <div className="flex justify-center mt-8">
+          <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
+        </div>
+        <Offer />
       </div>
-      {showLoginModal && <Login setShowLoginModal={setShowLoginModal} />}
-      <Footer />
-    </div>
-
+    </Router>
   );
 }
 
-export default App
+export default App;
