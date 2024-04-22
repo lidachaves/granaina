@@ -1,4 +1,3 @@
-// app.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
@@ -6,6 +5,8 @@ import Header from './COMPONENTES/header.jsx';
 import Login from './COMPONENTES/LOGIN.jsx'; 
 import Carousel from './COMPONENTES/carousel.jsx';
 import Offer from './COMPONENTES/service.jsx'; 
+import CardCarousel from './COMPONENTES/novedades.jsx';  
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -47,6 +48,7 @@ function App() {
           <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
         </div>
         <Offer />
+        <CardCarousel/> {/*  componente Novedades aquí */}
       </div>
     </Router>
   );

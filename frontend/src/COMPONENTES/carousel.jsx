@@ -24,6 +24,7 @@ export default function Carousel({
       <div className="flex transition-transform ease-out duration-500" style={{ transform: `translateX(-${curr * 100}%)` }}> 
         {slides.map((slide, index) => (
           <div key={index} className={`w-full h-64 flex items-center justify-center bg-${index % 2 === 0 ? 'blue' : 'green'} text-white text-3xl font-bold`}>{slide}</div>
+        
         ))}
       </div>
       <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
