@@ -20,6 +20,23 @@ function App() {
     <div key="2">Slide 2</div>,
     <div key="3">Slide 3</div>,
   ];
+  const [productsInfo, setProductsInfo] = useState(null)
+
+  // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+      const json = await response.json()
+      if (response.ok) {
+        setProductsInfo(json)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // fetchProducts()
 
   return (
     <Router>

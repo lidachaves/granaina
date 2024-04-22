@@ -4,6 +4,8 @@ router = express.Router();
 
 productController = require("../controller/product.controller");
 
+router.get("/", productController.getAll);
+
 router.get("/:product", productController.get);
 
 router.post("/", productController.post);
