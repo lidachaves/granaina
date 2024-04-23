@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Header from './COMPONENTES/header.jsx';
@@ -25,19 +25,20 @@ function App() {
 
   // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
 
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/products");
-      const json = await response.json()
-      if (response.ok) {
-        setProductsInfo(json)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/products");
+        const json = await response.json()
+        if (response.ok) {
+          setProductsInfo(json)
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
     }
-  }
-
-  // fetchProducts()
+    fetchData()
+  }, [])
 
   return (
     <Router>
