@@ -6,6 +6,7 @@ import Login from './COMPONENTES/LOGIN.jsx';
 import Carousel from './COMPONENTES/carousel.jsx';
 import Offer from './COMPONENTES/service.jsx'; 
 import CardCarousel from './COMPONENTES/novedades.jsx';  
+import Section from './COMPONENTES/feactures.jsx';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         </div>
         <Offer />
         <CardCarousel/> {/*  componente Novedades aquí */}
+        <Section /> {/*  componente Features aquí */}
       </div>
     </Router>
   );

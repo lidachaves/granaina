@@ -29,8 +29,8 @@ const CardCarousel = () => {
 
   return (
     <div className="relative my-8 p-10">
-          <h2 className="text-2xl font-bold mb-4 text-gray-700 relative">NOVEDADES</h2>
-      <div className="flex overflow-x-auto" ref={scrollRef}>
+      <h2 className="text-2xl font-bold mb-4 text-gray-700 relative">NOVEDADES</h2>
+      <div className="flex overflow-hidden" ref={scrollRef}>
         {cards.map(card => (
           <div key={card.id} className="flex-none w-64 bg-white shadow-md mx-4 my-2 rounded-lg p-4">
             <h2 className="text-lg font-semibold mb-2">{card.title}</h2>
