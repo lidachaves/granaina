@@ -14,7 +14,7 @@ const features = [
       <div className="bg-white">
         <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our products</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nuestros productos</h2>
             <p className="mt-4 text-gray-500">
             Officia excepteur ullamco ut sint duis proident non adipisicing. Voluptate incididunt anim laborum laborum.
             Officia excepteur ullamco ut sint duis proident non adipisicing. Voluptate incididunt anim.

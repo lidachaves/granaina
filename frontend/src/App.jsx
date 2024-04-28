@@ -8,12 +8,15 @@ import Offer from './COMPONENTES/service.jsx';
 import CardCarousel from './COMPONENTES/novedades.jsx';  
 import Section from './COMPONENTES/feactures.jsx';
 
-
 function App() {
   const [showLogin, setShowLogin] = useState(false);
 
   const toggleLogin = () => {
     setShowLogin(!showLogin);
+  };
+
+  const handleClose = () => {
+    setShowLogin(false);
   };
 
   // Aca defini las diapositivas para el Carousel
@@ -45,13 +48,13 @@ function App() {
     <Router>
       <div className="App">
         <Header toggleLogin={toggleLogin} />
-        {showLogin && <Login />}
+        {showLogin && <Login onClose={handleClose} />}
         <div className="flex justify-center mt-8">
           <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
         </div>
         <Offer />
-        <CardCarousel/> {/*  componente Novedades aquí */}
-        <Section /> {/*  componente Features aquí */}
+        <CardCarousel/> 
+        <Section />
       </div>
     </Router>
   );

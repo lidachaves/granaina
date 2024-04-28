@@ -3,14 +3,14 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 const CardCarousel = () => {
   const cards = [
-    { id: 1, title: 'Tarjeta 1', content: 'Contenido de la tarjeta 1', description: 'Breve descripción 1', imageUrl: '/producto8.jpeg' },
-    { id: 2, title: 'Tarjeta 2', content: 'Contenido de la tarjeta 2', description: 'Breve descripción 2', imageUrl: '/producto9.jpeg' },
-    { id: 3, title: 'Tarjeta 3', content: 'Contenido de la tarjeta 3', description: 'Breve descripción 3', imageUrl: '/producto10.jpeg' },
-    { id: 4, title: 'Tarjeta 4', content: 'Contenido de la tarjeta 4', description: 'Breve descripción 4', imageUrl: '/producto8.jpeg' },
-    { id: 5, title: 'Tarjeta 5', content: 'Contenido de la tarjeta 5', description: 'Breve descripción 5', imageUrl: '/producto9.jpeg' },
-    { id: 6, title: 'Tarjeta 6', content: 'Contenido de la tarjeta 6', description: 'Breve descripción 6', imageUrl: '/producto10.jpeg' },
-    { id: 7, title: 'Tarjeta 7', content: 'Contenido de la tarjeta 7', description: 'Breve descripción 7', imageUrl: '/producto8.jpeg' },
-    { id: 8, title: 'Tarjeta 8', content: 'Contenido de la tarjeta 8', description: 'Breve descripción 8', imageUrl: '/producto9.jpeg' },
+    { id: 1, title: 'Tarjeta 1', content: 'Contenido de la tarjeta 1', description: 'Breve descripción 1', imageUrl: '/producto5.jpeg' },
+    { id: 2, title: 'Tarjeta 2', content: 'Contenido de la tarjeta 2', description: 'Breve descripción 2', imageUrl: '/producto6.jpeg' },
+    { id: 3, title: 'Tarjeta 3', content: 'Contenido de la tarjeta 3', description: 'Breve descripción 3', imageUrl: '/producto7.jpeg' },
+    { id: 4, title: 'Tarjeta 4', content: 'Contenido de la tarjeta 4', description: 'Breve descripción 4', imageUrl: '/producto6.jpeg' },
+    { id: 5, title: 'Tarjeta 5', content: 'Contenido de la tarjeta 5', description: 'Breve descripción 5', imageUrl: '/producto5.jpeg' },
+    { id: 6, title: 'Tarjeta 6', content: 'Contenido de la tarjeta 6', description: 'Breve descripción 6', imageUrl: '/producto7.jpeg' },
+    { id: 7, title: 'Tarjeta 7', content: 'Contenido de la tarjeta 7', description: 'Breve descripción 7', imageUrl: '/producto6.jpeg' },
+    { id: 8, title: 'Tarjeta 8', content: 'Contenido de la tarjeta 8', description: 'Breve descripción 8', imageUrl: '/producto5.jpeg' },
   ];
 
   // Función para barajar el array de tarjetas
@@ -57,7 +57,7 @@ const CardCarousel = () => {
     if (scrollRef.current) {
       const scrollContainer = scrollRef.current;
       const targetScroll = scrollContainer.scrollLeft + 200; // Definir el desplazamiento deseado
-      const duration = 500; // Duración de la animación en milisegundos
+      const duration = 500;                                        // Duración de la animación en milisegundos
       animateScroll(scrollContainer, targetScroll, duration);
     }
   };
@@ -67,7 +67,7 @@ const CardCarousel = () => {
       <h2 className="text-2xl font-bold mb-4 text-gray-700 relative">NOVEDADES</h2>
       <div className="flex overflow-hidden" ref={scrollRef}>
         {shuffledCards.map(card => (
-        <div key={card.id} className="flex-none w-40 bg-white shadow-md mx-6 my-2 rounded-lg p-4">
+       <div key={card.id} className="flex-none w-60 bg-white shadow-md mx-6 my-2 rounded-lg p-4">
             <img src={card.imageUrl} alt={card.title} className="w-full h-auto rounded-lg mb-2" />
             <h2 className="text-lg font-semibold mb-2">{card.title}</h2>
             <p className="text-gray-600">{card.content}</p>
