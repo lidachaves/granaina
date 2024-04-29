@@ -38,7 +38,7 @@ async function post(req, res) {
   }
 }
 
-async function put(req, res) {
+async function patch(req, res) {
   try {
     const { product } = req.params;
     const { URLName, name, description, price } = req.body;
@@ -68,4 +68,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { getAll, get, post, put, destroy };
+module.exports = { getAll, get, post, patch, destroy };
