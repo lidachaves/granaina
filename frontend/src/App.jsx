@@ -7,6 +7,7 @@ import Carousel from './COMPONENTES/carousel.jsx';
 import Offer from './COMPONENTES/service.jsx'; 
 import CardCarousel from './COMPONENTES/novedades.jsx';  
 import Section from './COMPONENTES/feactures.jsx';
+import ChakraCard from './COMPONENTES/calltoaction.jsx';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -55,6 +56,7 @@ function App() {
         <Offer />
         <CardCarousel/> 
         <Section />
+        <ChakraCard />
       </div>
     </Router>
   );

@@ -36,7 +36,7 @@ const features = [
               className="rounded-lg bg-gray-100"
             />
             <img
-              src="public/ejem3.jpg"
+              src="public/producto3.jpeg"
               alt="Top down view of walnut card tray with embedded magnets and card groove."
               className="rounded-lg bg-gray-100"
             />
