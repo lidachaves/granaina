@@ -33,7 +33,7 @@ function Root() {
             <Header /> {/* Esta funcion que meti es para controlar el modal como una prop */}
             <Banner1 />
             <div className="flex flex-wrap justify-around mt-8">
-                {productsInfo ? productsInfo.map((product) => (
+                {productsInfo && productsInfo.length != 0 ? productsInfo.map((product) => (
                     <ProductCard key={product._id} productInfo={product} />
                 )) : 'No hay productos'}
 
