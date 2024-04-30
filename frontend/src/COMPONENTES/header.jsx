@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import 'tailwindcss/tailwind.css';
+import { Link } from 'react-router-dom';
 
 const Header = ({ toggleLogin }) => {
   const [showModal, setShowModal] = useState(false);
@@ -27,7 +28,7 @@ const Header = ({ toggleLogin }) => {
           </ul>
           <div className="flex items-center space-x-5">
             {/* Icono de usuario */}
-            <FontAwesomeIcon icon={faUser} className="text-lg cursor-pointer hover:text-gray-300" onClick={toggleLogin} />
+            <Link to="/login"><FontAwesomeIcon icon={faUser} className="text-lg cursor-pointer hover:text-gray-300" /></Link>
             {/* Icono de carrito */}
             <FontAwesomeIcon icon={faShoppingCart} className="text-lg cursor-pointer hover:text-gray-300" />
           </div>
