@@ -1,17 +1,30 @@
 import { useState, useEffect } from 'react'
 import '../App.css';
-import Header from '../Cabecera.jsx';
 import ProductCard from '../COMPONENTES/tarjeta.jsx';
 // import 'tailwindcss/tailwind.css';
-import Footer from '../COMPONENTES/footer.jsx';
-import Banner1 from '../COMPONENTES/banner1.jsx';
-
-
-
+import Header from '../COMPONENTES/header.jsx';
+import Login from '../COMPONENTES/LOGIN.jsx';
+import Carousel from '../COMPONENTES/carousel.jsx';
+import Offer from '../COMPONENTES/service.jsx';
+import CardCarousel from '../COMPONENTES/novedades.jsx';
+import Section from '../COMPONENTES/feactures.jsx';
 function Root() {
     const [productsInfo, setProductsInfo] = useState(null)
 
     // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
+
+    const [showLogin, setShowLogin] = useState(false);
+
+    const toggleLogin = () => {
+        setShowLogin(!showLogin);
+    };
+
+    // Aca defini las diapositivas para el Carousel
+    const slides = [
+        <div key="1">Slide 1</div>,
+        <div key="2">Slide 2</div>,
+        <div key="3">Slide 3</div>,
+    ];
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,15 +43,20 @@ function Root() {
 
     return (
         <div className="App">
-            <Header /> {/* Esta funcion que meti es para controlar el modal como una prop */}
-            <Banner1 />
+            <Header />
+            {/* {showLogin && <Login />} */}
+            <div className="flex justify-center mt-8">
+                <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
+            </div>
+            <Offer />
             <div className="flex flex-wrap justify-around mt-8">
                 {productsInfo && productsInfo.length != 0 ? productsInfo.map((product) => (
                     <ProductCard key={product._id} productInfo={product} />
                 )) : 'No hay productos'}
 
             </div>
-            <Footer />
+            <CardCarousel /> {/*  componente Novedades aquí */}
+            <Section /> {/*  componente Features aquí */}
         </div>
 
     );
