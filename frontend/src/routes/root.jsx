@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import '../App.css';
 import ProductCard from '../COMPONENTES/tarjeta.jsx';
 // import 'tailwindcss/tailwind.css';
 import Header from '../COMPONENTES/header.jsx';
