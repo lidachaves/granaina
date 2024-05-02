@@ -19,12 +19,13 @@ async function login(req, res) {
     const { email, password } = req.body;
     if (!email || !password) {
       res.status(400).json({ message: "Missing parameters" });
+      return;
     }
     const user = await User.findOne({ email });
-    if (!user)
-      res
-        .status(400)
-        .send(JSON.stringify({ msg: "Incorrect email or password" }));
+    if (!user) {
+      res.status(400).json({ msg: "Incorrect email or password" });
+      return;
+    }
     const correctPassword = await bcryptjs.compare(password, user.password);
     if (!correctPassword) {
       res.status(400).send({ msg: "Incorrect email or password" });
