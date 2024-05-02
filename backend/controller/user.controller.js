@@ -16,12 +16,12 @@ async function get(req, res) {
 
 async function login(req, res) {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user) res.send(JSON.stringify({ msg: "Incorrect user or password" }));
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) res.send(JSON.stringify({ msg: "Incorrect email or password" }));
     const correctPassword = await bcryptjs.compare(password, user.password);
     if (!correctPassword) {
-      res.send({ msg: "Incorrect user or password" });
+      res.send({ msg: "Incorrect email or password" });
       return;
     }
     res.status(200).send({ token: jwt.createToken(user, "24h") });
