@@ -17,11 +17,17 @@ async function get(req, res) {
 async function login(req, res) {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ message: "Missing parameters" });
+    }
     const user = await User.findOne({ email });
-    if (!user) res.send(JSON.stringify({ msg: "Incorrect email or password" }));
+    if (!user)
+      res
+        .status(400)
+        .send(JSON.stringify({ msg: "Incorrect email or password" }));
     const correctPassword = await bcryptjs.compare(password, user.password);
     if (!correctPassword) {
-      res.send({ msg: "Incorrect email or password" });
+      res.status(400).send({ msg: "Incorrect email or password" });
       return;
     }
     res.status(200).send({ token: jwt.createToken(user, "24h") });

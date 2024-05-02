@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Header from '../Cabecera.jsx';
+import Header from '../COMPONENTES/header';
 import { useLogin } from '../hooks/useLogin'
 // import 'tailwindcss/tailwind.css';
 // import Footer from '../COMPONENTES/footer.jsx';
@@ -19,14 +19,39 @@ function Login() {
     return (
         <div className="App">
             <Header /> {/* Esta funcion que meti es para controlar el modal como una prop */}
-            <form onSubmit={handleSubmit}>
-                <label>Email</label>
-                <input type="email" name="email" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
-                <label>Password</label>
-                <input type="password" name="password" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
-                <button disabled={isLoading}>Iniciar sesión</button>
-            </form>
-            {/* <Footer /> */}
+            <div className="flex justify-center items-center p-6">
+                <div className="w-96 rounded-lg shadow-lg p-4">
+                    <h2 className="text-3xl font-bold mb-4">Iniciar sesión</h2>
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <label htmlFor="email">Correo electrónico</label>
+
+                        <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            type="email"
+                            placeholder="Correo electónico"
+                            name="user"
+                            defaultValue={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label htmlFor="password">Contraseña</label>
+                        <input
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            type="password"
+                            placeholder="Contraseña"
+                            name="password"
+                            defaultValue={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {/* <Link to="/forgotpassword" className="text-blue-500 text-sm">¿Olvidaste tu contraseña?</Link> */}
+                        <button
+                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            disabled={isLoading}
+                        >
+                            Iniciar sesión
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     );

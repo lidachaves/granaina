@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import 'tailwindcss/tailwind.css';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from '../hooks/useLogout';
 
 const Header = ({ toggleLogin }) => {
   const [showModal, setShowModal] = useState(false);
+  const { user } = useAuthContext();
+  const { logout } = useLogout()
 
   const handleLoginClick = () => {
     setShowModal(true);
@@ -14,6 +18,10 @@ const Header = ({ toggleLogin }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  const handleLogout = () => {
+    logout();
+  }
 
   return (
     <header className="bg-gray-800 text-white flex px-5 py-3 justify-center">
@@ -26,12 +34,19 @@ const Header = ({ toggleLogin }) => {
             <li><Link href="#" className="hover:text-gray-300">Categories</Link></li>
             <li><Link href="#" className="hover:text-gray-300">Promotions</Link></li>
           </ul>
-          <div className="flex items-center space-x-5">
-            {/* Icono de usuario */}
-            <Link to="/login"><FontAwesomeIcon icon={faUser} className="text-lg cursor-pointer hover:text-gray-300" /></Link>
-            {/* Icono de carrito */}
-            <FontAwesomeIcon icon={faShoppingCart} className="text-lg cursor-pointer hover:text-gray-300" />
-          </div>
+          {user ? (
+            <div className="flex gap-4 items-center">
+              <p>Sesión iniciada</p>
+              <button onClick={handleLogout} className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400">Cerrar sesión</button>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-5">
+              {/* Icono de usuario */}
+              <Link to="/login"><FontAwesomeIcon icon={faUser} className="text-lg cursor-pointer hover:text-gray-300" /></Link>
+              {/* Icono de carrito */}
+              <FontAwesomeIcon icon={faShoppingCart} className="text-lg cursor-pointer hover:text-gray-300" />
+            </div>
+          )}
         </nav>
       </div>
     </header>
