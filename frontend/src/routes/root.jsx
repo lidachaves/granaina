@@ -12,14 +12,6 @@ import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
 function Root() {
     const [productsInfo, setProductsInfo] = useState(null)
 
-    // const products = [{ name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }, { name: 'product1', description: "lorem ipsum", price: 20.00 }]
-
-    const [showLogin, setShowLogin] = useState(false);
-
-    const toggleLogin = () => {
-        setShowLogin(!showLogin);
-    };
-
     // Aca defini las diapositivas para el Carousel
     const slides = [
         <div key="1">Slide 1</div>,
@@ -45,23 +37,29 @@ function Root() {
     return (
         <div className="App">
             <Header />
-            {/* {showLogin && <Login />} */}
             {/* <div className="flex justify-center mt-8">
                 <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
             </div> */}
             {/* <Offer /> */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-w-7xl mx-auto">
-                {productsInfo && productsInfo.length != 0 ? productsInfo.map((product) => (
-                    <ProductCard key={product._id} productInfo={product} />
-                )) : (
-                    <>
-                        <ProductCardLoading />
-                        <ProductCardLoading />
-                        <ProductCardLoading />
-                        <ProductCardLoading />
-                    </>
-                )}
-
+            <div className="p-4 bg-gray-200">
+                <div className="h-96 rounded-lg overflow-hidden mx-auto max-w-7xl">
+                    <div className="bg-blue-400 h-96"></div>
+                </div>
+            </div>
+            <div className="p-4">
+                <h2 className="text-2xl font-bold max-w-7xl mx-auto mb-4">Productos</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto">
+                    {productsInfo && productsInfo.length != 0 ? productsInfo.map((product) => (
+                        <ProductCard key={product._id} productInfo={product} />
+                    )) : (
+                        <>
+                            <ProductCardLoading />
+                            <ProductCardLoading />
+                            <ProductCardLoading />
+                            <ProductCardLoading />
+                        </>
+                    )}
+                </div>
             </div>
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
             {/* <Section /> */} {/*  componente Features aquí */}
