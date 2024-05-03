@@ -14,10 +14,8 @@ import Register from './routes/register.jsx';
 import { useAuthContext } from "./hooks/useAuthContext";
 import { Link } from 'react-router-dom';
 
-
-
 function App() {
-    const { user } = { user: null };
+    const { user } = useAuthContext()
 
     return (
         <div className="App">
