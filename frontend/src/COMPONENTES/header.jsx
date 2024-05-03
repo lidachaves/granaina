@@ -31,6 +31,7 @@ const Header = ({ toggleLogin }) => {
         {user ? (
           <div className="flex gap-4 items-center">
             <p>Sesión iniciada</p>
+            <Link to="/account">Cuenta</Link>
             <button onClick={handleLogout} className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400">Cerrar sesión</button>
           </div>
         ) : (
