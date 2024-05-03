@@ -15,8 +15,8 @@ const Header = ({ toggleLogin }) => {
   }
 
   return (
-    <header className="bg-gray-800 text-white flex px-5 py-3 justify-center">
-      <div className="max-w-7xl w-full flex justify-between gap-5 items-center">
+    <header className="bg-gray-800 text-white flex py-3 justify-center">
+      <div className="max-w-7xl w-full flex justify-between gap-5 items-center h-10 px-5">
         <div className="flex gap-5">
           <h1 className="text-xl font-bold">Logo</h1>
           <nav className="flex items-center space-x-9">

@@ -7,6 +7,8 @@ import Carousel from '../COMPONENTES/carousel.jsx';
 import Offer from '../COMPONENTES/service.jsx';
 import CardCarousel from '../COMPONENTES/novedades.jsx';
 import Section from '../COMPONENTES/feactures.jsx';
+import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
+
 function Root() {
     const [productsInfo, setProductsInfo] = useState(null)
 
@@ -44,18 +46,25 @@ function Root() {
         <div className="App">
             <Header />
             {/* {showLogin && <Login />} */}
-            <div className="flex justify-center mt-8">
+            {/* <div className="flex justify-center mt-8">
                 <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
-            </div>
-            <Offer />
-            <div className="flex flex-wrap justify-around mt-8">
+            </div> */}
+            {/* <Offer /> */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-w-7xl mx-auto">
                 {productsInfo && productsInfo.length != 0 ? productsInfo.map((product) => (
                     <ProductCard key={product._id} productInfo={product} />
-                )) : 'No hay productos'}
+                )) : (
+                    <>
+                        <ProductCardLoading />
+                        <ProductCardLoading />
+                        <ProductCardLoading />
+                        <ProductCardLoading />
+                    </>
+                )}
 
             </div>
-            <CardCarousel /> {/*  componente Novedades aquí */}
-            <Section /> {/*  componente Features aquí */}
+            {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
+            {/* <Section /> */} {/*  componente Features aquí */}
         </div>
 
     );

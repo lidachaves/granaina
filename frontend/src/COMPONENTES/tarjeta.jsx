@@ -1,19 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 const ProductCard = ({ productInfo }) => {
   return (
-    <div className="w-full md:w-1/3 p-4 font-ubuntu"> {/* Agregar la clase font-ubuntu */}
-      <div className="bg-white shadow-md rounded-lg px-8 pt-6 pb-8">
-        <img
-          className="w-full h-64 object-cover rounded-t-lg transition-transform duration-500 transform hover:scale-105"
-          src="producto.jpg"
-          alt="Producto"
-        />
-        <h2 className="text-xl font-bold mt-4">{productInfo.name}</h2>
-        <p className="text-gray-700 text-base">{productInfo.price}</p>
-        <p className="text-gray-700 text-base">{productInfo.description}</p>
-        <button className="bg-f0f3f5 hover:bg-blue-500 text-333 font-bold py-2 px-4 rounded mt-4 transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
-          Añadir al carrito
-        </button>
+
+    <div className="flex flex-col bg-white shadow-md rounded-lg h-64">
+      {productInfo.imageUrl ? (
+        <img src={productInfo.imageUrl} alt={productInfo.title} className="w-full h-48 rounded-lg mb-2 rounded-t-md" />
+      ) : (
+        <div className="h-48 w-full bg-gray-300 rounded-t-md">{productInfo.title}</div>
+      )}
+      <div className="flex flex-col gap-2 p-2">
+        <h2 className="text-lg font-semibold">{productInfo.name}</h2>
+        {/* <p className="text-gray-600">{productInfo.content}</p> */}
+        {/* <p className="text-sm text-gray-500 mt-2">{productInfo.description}</p> */}
+        <Link className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center" to={"product/" + productInfo.URLName}>
+          Ver detalle
+        </Link>
       </div>
     </div>
   );
