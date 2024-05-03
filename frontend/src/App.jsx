@@ -8,6 +8,7 @@ import Offer from './COMPONENTES/service.jsx';
 import CardCarousel from './COMPONENTES/novedades.jsx';  
 import Section from './COMPONENTES/feactures.jsx';
 import ChakraCard from './COMPONENTES/calltoaction.jsx';
+import Footer from './COMPONENTES/footer.jsx';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -20,7 +21,7 @@ function App() {
     setShowLogin(false);
   };
 
-  // Aca defini las diapositivas para el Carousel
+  // diapositivas para el Carousel
   const slides = [
     <div key="1">Slide 1</div>,
     <div key="2">Slide 2</div>,
@@ -57,6 +58,7 @@ function App() {
         <CardCarousel/> 
         <Section />
         <ChakraCard />
+        <Footer />
       </div>
     </Router>
   );
