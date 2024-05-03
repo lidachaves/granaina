@@ -10,6 +10,10 @@ import {
 } from "react-router-dom";
 import ErrorPage from './routes/error-page.jsx';
 import Login from './routes/login.jsx';
+import Register from './routes/register.jsx';
+import { useAuthContext } from "./hooks/useAuthContext";
+import { Link } from 'react-router-dom';
+
 
 
 function App() {
@@ -20,7 +24,8 @@ function App() {
             <BrowserRouter errorElement={<ErrorPage />}>
                 <Routes>
                     <Route path="/" element={<Root />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={!user ? <Login /> : <Navigate to="/me" />} />
+                    <Route path="/register" element={!user ? <Register /> : <Navigate to="/me" />} />
                     <Route path="/me" element={user ? <p>Ruta protegida <Link to="/">Ir a la tienda</Link></p> : <Navigate to="/login" />} />
                 </Routes>
             </BrowserRouter>
