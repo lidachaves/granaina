@@ -10,6 +10,7 @@ async function get(req, res) {
     const user = await User.findOne({ username: usernameParameter });
     if (!user) {
       res.status(404).json({ error: "The user does not exist" });
+      return;
     }
     res.status(200).send({ username: user.username, name: user.name });
   } catch (e) {
