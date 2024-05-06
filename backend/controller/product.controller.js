@@ -21,10 +21,14 @@ async function get(req, res) {
 
 async function post(req, res) {
   try {
-    console.log(Product);
     const { URLName, name, description, price } = req.body;
+    console.log(req.user);
+    if (!URLName || !name || !description || !price) {
+      res.status(400).json({ msg: "Missing parameters" });
+      return;
+    }
     const productArray = {
-      sellerId: 0,
+      sellerId: req.user.id,
       URLName: URLName,
       name: name,
       description: description,
