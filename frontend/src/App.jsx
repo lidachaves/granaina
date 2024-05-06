@@ -13,6 +13,7 @@ import Login from './routes/login.jsx';
 import Register from './routes/register.jsx';
 import { useAuthContext } from "./hooks/useAuthContext";
 import AccountPage from './routes/accountPage';
+import AboutUs from './routes/about.jsx'
 
 function App() {
     const { user } = useAuthContext()
@@ -25,6 +26,8 @@ function App() {
                     <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                     <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                     <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/login" />} />
+                    <Route path="/about" element={<AboutUs />} />
+
                 </Routes>
             </BrowserRouter>
         </div>

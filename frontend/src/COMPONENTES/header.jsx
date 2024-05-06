@@ -21,8 +21,8 @@ const Header = () => {
           <h1 className="text-xl font-bold">Logo</h1>
           <nav className="flex items-center space-x-9">
             <ul className="flex gap-5">
-              <li><Link href="#" className="hover:text-gray-300">Home</Link></li>
-              <li><Link href="#" className="hover:text-gray-300">About</Link></li>
+              <li><Link to="/" className="hover:text-gray-300">Home</Link></li>
+              <li><Link to="/about" className="hover:text-gray-300">About</Link></li>
               <li><Link href="#" className="hover:text-gray-300">Categories</Link></li>
               <li><Link href="#" className="hover:text-gray-300">Promotions</Link></li>
             </ul>
