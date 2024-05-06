@@ -17,6 +17,10 @@ async function get(req, res) {
 async function login(req, res) {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).send("Missing parameters");
+      return;
+    }
     const user = await User.findOne({ email });
     if (!user) res.send(JSON.stringify({ msg: "Incorrect email or password" }));
     const correctPassword = await bcryptjs.compare(password, user.password);
