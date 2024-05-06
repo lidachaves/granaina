@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "../COMPONENTES/tarjeta.jsx";
 // import 'tailwindcss/tailwind.css';
 import Header from "../COMPONENTES/header.jsx";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 
 function ProductPage() {
@@ -39,9 +39,9 @@ function ProductPage() {
                             </h3>
                         </div>
                         <div className="flex gap-4 justify-end items-center p-2 border-2 border-zinc-200 rounded-md">
-                            <h2 className="text-2xl">
+                            <Link to={"/store/" + productInfo.sellerInfo.username} className="text-2xl">
                                 {productInfo.sellerInfo.name}
-                            </h2>
+                            </Link>
                             <h4 className="text-xl">{productInfo.price}€</h4>
                             <button className="bg-green-800 hover:bg-green-700 active:bg-green-600 text-white rounded-full py-2 px-4">Añadir al carrito</button>
                         </div>

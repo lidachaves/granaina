@@ -22,7 +22,7 @@ async function get(req, res) {
       if (sellerInfo) {
         productInfo = {
           ...productInfo._doc,
-          sellerInfo: { name: sellerInfo.name },
+          sellerInfo: { name: sellerInfo.name, username: sellerInfo.username },
         };
       } else {
         throw new Error("Error");

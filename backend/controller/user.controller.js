@@ -6,9 +6,12 @@ const jwt = require("../services/jwt");
 
 async function get(req, res) {
   try {
-    const { usernameParameter } = req.params;
-    const { username, name } = await User.find({ username: usernameParameter });
-    res.send({ username, name });
+    const { username: usernameParameter } = req.params;
+    const user = await User.findOne({ username: usernameParameter });
+    if (!user) {
+      res.status(404).json({ error: "The user does not exist" });
+    }
+    res.status(200).send({ username: user.username, name: user.name });
   } catch (e) {
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
