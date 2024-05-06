@@ -18,17 +18,20 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      res.status(400).send("Missing parameters");
+      res.status(400).json({ error: "Missing parameters" });
       return;
     }
     const user = await User.findOne({ email });
-    if (!user) res.send(JSON.stringify({ msg: "Incorrect email or password" }));
-    const correctPassword = await bcryptjs.compare(password, user.password);
-    if (!correctPassword) {
-      res.send({ msg: "Incorrect email or password" });
+    if (!user) {
+      res.status(400).json({ error: "Incorrect email or password" });
       return;
     }
-    res.status(200).send({ token: jwt.createToken(user, "24h") });
+    const correctPassword = await bcryptjs.compare(password, user.password);
+    if (!correctPassword) {
+      res.status(400).json({ error: "Incorrect email or password" });
+      return;
+    }
+    res.status(200).json({ token: jwt.createToken(user, "24h") });
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal server error");

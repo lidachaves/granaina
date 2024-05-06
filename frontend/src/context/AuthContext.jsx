@@ -24,6 +24,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
+  console.log(localStorage.getItem('user'))
   console.log("AuthContext state: ", state);
 
   return (

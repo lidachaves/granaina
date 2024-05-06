@@ -51,6 +51,11 @@ function Login() {
                         >
                             Iniciar sesión
                         </button>
+                        {error ? (
+                            <div className="bg-red-200 rounded p-3 text-red-950">
+                                {error}
+                            </div>
+                        ) : ""}
                     </form>
                 </div>
             </div>
