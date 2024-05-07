@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 // import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
 import './index.css'
@@ -16,17 +16,12 @@ import AccountPage from './routes/accountPage';
 import AboutUs from './routes/about.jsx'
 import ProductPage from './routes/productPage.jsx';
 import StorePage from './routes/storePage.jsx';
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
 import Header from './COMPONENTES/header.jsx';
-import Login from './COMPONENTES/LOGIN.jsx';
 import Carousel from './COMPONENTES/carousel.jsx';
 import Offer from './COMPONENTES/service.jsx';
 import CardCarousel from './COMPONENTES/novedades.jsx';
 import Section from './COMPONENTES/feactures.jsx';
-import ChakraCard from './COMPONENTES/calltoaction.jsx';
-import Footer from './COMPONENTES/footer.jsx';
 
 function App() {
   const { user } = useAuthContext()
@@ -45,7 +40,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-    </Router >
   );
 }
 
