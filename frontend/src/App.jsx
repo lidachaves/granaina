@@ -32,25 +32,19 @@ function App() {
   const { user } = useAuthContext()
 
   return (
-        <div className="App">
-            <BrowserRouter errorElement={<ErrorPage />}>
-                <Routes>
-                    <Route path="/" element={<Root />} />
-                    <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-                    <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
-                    <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/login" />} />
-                    <Route path="/about" element={<AboutUs />} />
-                    <Route path="/product/:URLName" element={<ProductPage />} />
-                    <Route path="/store/:URLName" element={<StorePage />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-        <Offer />
-        <CardCarousel/> 
-        <Section />
-        <ChakraCard />
-        <Footer />
-      </div >
+    <div className="App">
+      <BrowserRouter errorElement={<ErrorPage />}>
+        <Routes>
+          <Route path="/" element={<Root />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+          <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+          <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/login" />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/product/:URLName" element={<ProductPage />} />
+          <Route path="/store/:URLName" element={<StorePage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
     </Router >
   );
 }

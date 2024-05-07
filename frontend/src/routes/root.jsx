@@ -60,6 +60,11 @@ function Root() {
                         </>
                     )}
                 </div>
+                <Offer />
+                <CardCarousel />
+                <Section />
+                <ChakraCard />
+                <Footer />
             </div>
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
             {/* <Section /> */} {/*  componente Features aquí */}
