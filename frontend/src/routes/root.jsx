@@ -8,7 +8,6 @@ import Offer from '../COMPONENTES/service.jsx';
 import CardCarousel from '../COMPONENTES/novedades.jsx';
 import Section from '../COMPONENTES/feactures.jsx';
 import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
-import ChakraCard from '../COMPONENTES/calltoaction.jsx';
 import Footer from '../COMPONENTES/footer.jsx';
 
 
@@ -67,7 +66,7 @@ function Root() {
                 <Offer />
                 <CardCarousel />
                 <Section />
-                <ChakraCard />
+              
                 <Footer />
             </div>
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
