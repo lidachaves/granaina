@@ -68,8 +68,8 @@ function Root() {
                 <CardCarousel />
                 <Section />
                 <ChakraCard />
-                <Footer />
             </div>
+            <Footer />
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
             {/* <Section /> */} {/*  componente Features aquí */}
         </div>
