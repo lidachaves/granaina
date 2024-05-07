@@ -1,9 +1,10 @@
 const { Product } = require("../model/product.model");
+const User = require("../model/user.model");
 
 async function getAll(req, res) {
   try {
     const productInfo = await Product.find();
-    res.send(productInfo);
+    res.status(200).send(productInfo);
   } catch (e) {
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
@@ -12,19 +13,41 @@ async function getAll(req, res) {
 async function get(req, res) {
   try {
     const { product } = req.params;
-    const productInfo = await Product.find({ URLName: product });
-    res.send(productInfo);
+    let productInfo = await Product.findOne({ URLName: product });
+    if (productInfo.sellerId) {
+      const sellerInfo = await User.findOne({
+        _id: productInfo.sellerId,
+      });
+      console.log(productInfo);
+      if (sellerInfo) {
+        productInfo = {
+          ...productInfo._doc,
+          sellerInfo: { name: sellerInfo.name, username: sellerInfo.username },
+        };
+      } else {
+        throw new Error("Error");
+      }
+    } else {
+      console.log("Error");
+    }
+    console.log(productInfo);
+    res.status(200).json(productInfo);
   } catch (e) {
+    console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
 }
 
 async function post(req, res) {
   try {
-    console.log(Product);
     const { URLName, name, description, price } = req.body;
+    console.log(req.user);
+    if (!URLName || !name || !description || !price) {
+      res.status(400).json({ msg: "Missing parameters" });
+      return;
+    }
     const productArray = {
-      sellerId: 0,
+      sellerId: req.user.id,
       URLName: URLName,
       name: name,
       description: description,

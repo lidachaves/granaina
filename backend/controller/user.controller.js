@@ -6,9 +6,13 @@ const jwt = require("../services/jwt");
 
 async function get(req, res) {
   try {
-    const { usernameParameter } = req.params;
-    const { username, name } = await User.find({ username: usernameParameter });
-    res.send({ username, name });
+    const { username: usernameParameter } = req.params;
+    const user = await User.findOne({ username: usernameParameter });
+    if (!user) {
+      res.status(404).json({ error: "The user does not exist" });
+      return;
+    }
+    res.status(200).send({ username: user.username, name: user.name });
   } catch (e) {
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
   }
@@ -16,15 +20,22 @@ async function get(req, res) {
 
 async function login(req, res) {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user) res.send(JSON.stringify({ msg: "Incorrect user or password" }));
-    const correctPassword = await bcryptjs.compare(password, user.password);
-    if (!correctPassword) {
-      res.send({ msg: "Incorrect user or password" });
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ error: "Missing parameters" });
       return;
     }
-    res.status(200).send({ token: jwt.createToken(user, "24h") });
+    const user = await User.findOne({ email });
+    if (!user) {
+      res.status(400).json({ error: "Incorrect email or password" });
+      return;
+    }
+    const correctPassword = await bcryptjs.compare(password, user.password);
+    if (!correctPassword) {
+      res.status(400).json({ error: "Incorrect email or password" });
+      return;
+    }
+    res.status(200).json({ token: jwt.createToken(user, "24h") });
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal server error");
