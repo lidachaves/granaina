@@ -5,6 +5,8 @@ const app = express();
 const port = 5000;
 const cors = require("cors");
 
+const zxcvbn = require("zxcvbn");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -32,7 +34,12 @@ const product = require("./routes/product");
 const user = require("./routes/user");
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  // const passwordScore = zxcvbn("Tr0ub4dour&3").score
+  const passwordScore = zxcvbn(
+    "fdjskljfdsklfjlksdajfldksajfdlksajfldskjkfdsa"
+  ).score;
+
+  res.send("Hello World!" + passwordScore);
 });
 
 app.use("/api/products/", product);

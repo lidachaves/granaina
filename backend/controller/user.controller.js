@@ -3,6 +3,10 @@ const { json } = require("express");
 const bcryptjs = require("bcryptjs");
 const User = require("../model/user.model");
 const jwt = require("../services/jwt");
+const zxcvbn = require("zxcvbn");
+const { min } = require("moment");
+
+const minPasswordScore = 2;
 
 async function get(req, res) {
   try {
@@ -55,6 +59,14 @@ async function signup(req, res) {
       res.send(JSON.stringify({ message: "The username is already taken." }));
       return;
     }
+
+    const passwordScore = zxcvbn(password).score;
+
+    if (passwordScore < minPasswordScore) {
+      res.status(400).json({ error: "The password is weak" });
+      return;
+    }
+
     const salt = bcryptjs.genSaltSync(10);
     const passwordHash = await bcryptjs.hash(password, salt);
 
