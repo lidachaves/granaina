@@ -9,6 +9,7 @@ import CardCarousel from '../COMPONENTES/novedades.jsx';
 import Section from '../COMPONENTES/feactures.jsx';
 import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
 import Footer from '../COMPONENTES/footer.jsx';
+import TemplateDemo from '../COMPONENTES/process.jsx';
 
 
 
@@ -66,7 +67,7 @@ function Root() {
                 <Offer />
                 <CardCarousel />
                 <Section />
-              
+                <TemplateDemo />  
                 <Footer />
             </div>
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
