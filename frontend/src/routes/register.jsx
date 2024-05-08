@@ -72,7 +72,7 @@ function Register() {
                                     setPasswordScore(zxcvbn(e.target.value).score)
                                 }}
                             />
-                            <div className="flex h-2 overflow-hidden rounded absolute bottom-1 left-1 right-1 bg-gray-200">
+                            <div className="flex h-2 overflow-hidden rounded absolute bottom-1 left-1 right-1 bg-gray-200 pointer-events-none">
                                 <span style={{ width: ((passwordScore + 1) * 20) + '%' }} className={"bg-" + passwordScoreColor}></span>
                             </div>
                         </div>
