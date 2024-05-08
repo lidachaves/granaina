@@ -34,18 +34,6 @@ const Header = () => {
               <li><Link href="#" className="hover:text-gray-300">Categories</Link></li>
               <li><Link href="#" className="hover:text-gray-300">Promotions</Link></li>
             </ul>
-            <div className="relative">
-              <a href="#" className="hover:text-gray-300" onClick={toggleCategories}>
-                Categorias
-              </a>
-              {showCategories && (
-                <ul className="absolute mt-2 bg-gray-800 text-white p-2 rounded-lg shadow-md z-50">
-                  {categories.map((category, index) => (
-                    <li key={index} className="hover:text-gray-300">{category}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
           </nav>
         </div>
         {user ? (

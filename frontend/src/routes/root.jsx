@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ProductCard from '../COMPONENTES/tarjeta.jsx';
+import ProductCard from '../COMPONENTES/tarjeta.jsx';  
 // import 'tailwindcss/tailwind.css';
 import Header from '../COMPONENTES/header.jsx';
 import Login from '../COMPONENTES/LOGIN.jsx';
@@ -9,7 +9,8 @@ import CardCarousel from '../COMPONENTES/novedades.jsx';
 import Section from '../COMPONENTES/feactures.jsx';
 import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
 import Footer from '../COMPONENTES/footer.jsx';
-import TemplateDemo from '../COMPONENTES/process.jsx';
+import PurchaseTimeline from '../COMPONENTES/process.jsx';
+
 
 
 
@@ -67,12 +68,9 @@ function Root() {
                 <Offer />
                 <CardCarousel />
                 <Section />
-                <TemplateDemo />  
+               <PurchaseTimeline />
                 <Footer />
             </div>
-            <Footer />
-            {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
-            {/* <Section /> */} {/*  componente Features aquí */}
         </div>
 
     );
