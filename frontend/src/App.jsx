@@ -18,6 +18,7 @@ import ProductPage from './routes/productPage.jsx';
 import Register from './routes/register.jsx';
 import RegisterStore from './routes/registerStore.jsx'
 import StorePage from './routes/storePage.jsx';
+import StorePanelPage from './routes/storePanelPage.jsx';
 
 function App() {
   const { user } = useAuthContext()
@@ -30,7 +31,7 @@ function App() {
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
           <Route path="/registerstore" element={!user ? <RegisterStore /> : <Navigate to="/" />} />
-          <Route path="/storepanel" element={user && user.store == true ? <RegisterStore /> : <Navigate to="/login" />} />
+          <Route path="/storepanel" element={user && user.store ? <StorePanelPage /> : <Navigate to="/login" />} />
           <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/login" />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/product/:URLName" element={<ProductPage />} />

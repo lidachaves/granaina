@@ -39,7 +39,13 @@ async function login(req, res) {
       res.status(400).json({ error: "Incorrect email or password" });
       return;
     }
-    res.status(200).json({ token: jwt.createToken(user, "24h") });
+    console.log(user);
+    console.log(user.password);
+    res.status(200).json({
+      token: jwt.createToken(user, "24h"),
+      email: user.email,
+      store: user.store ? true : false,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal server error");
