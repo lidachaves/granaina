@@ -51,6 +51,7 @@ const Header = () => {
         {user ? (
           <div className="flex gap-4 items-center">
             <p>Sesión iniciada</p>
+            {user.store ? <Link to="/storepanel">Mi tienda</Link> : ""}
             <Link to="/account">Cuenta</Link>
             <button onClick={handleLogout} className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400">Cerrar sesión</button>
           </div>

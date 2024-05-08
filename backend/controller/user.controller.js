@@ -1,10 +1,7 @@
-const { json } = require("express");
-
 const bcryptjs = require("bcryptjs");
 const User = require("../model/user.model");
 const jwt = require("../services/jwt");
 const zxcvbn = require("zxcvbn");
-const { min } = require("moment");
 
 const minPasswordScore = 2;
 
@@ -18,7 +15,7 @@ async function get(req, res) {
     }
     res.status(200).send({ username: user.username, name: user.name });
   } catch (e) {
-    res.status(500).send(JSON.stringify({ message: "Internal server error" }));
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
@@ -39,10 +36,14 @@ async function login(req, res) {
       res.status(400).json({ error: "Incorrect email or password" });
       return;
     }
-    res.status(200).json({ token: jwt.createToken(user, "24h") });
+    res.status(200).json({
+      token: jwt.createToken(user, "24h"),
+      email: user.email,
+      store: user.store ? true : false,
+    });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal server error");
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
@@ -50,20 +51,20 @@ async function signup(req, res) {
   try {
     const { username, name, email, password } = req.body;
     if (!username || !name || !email || !password) {
-      res.send(JSON.stringify({ message: "Missing parameters" }));
+      res.status(400).json({ error: "Missing parameters" });
       return;
     }
+
     const usernameInfo = await User.find({ username: username });
     console.log(usernameInfo.length);
     if (usernameInfo.length) {
-      res.send(JSON.stringify({ message: "The username is already taken." }));
+      res.status(400).json({ error: "The username is already taken." });
       return;
     }
 
     const passwordScore = zxcvbn(password).score;
-
     if (passwordScore < minPasswordScore) {
-      res.status(400).json({ error: "The password is weak" });
+      res.status(400).json({ error: "The password is too weak" });
       return;
     }
 
@@ -75,12 +76,13 @@ async function signup(req, res) {
       name: name,
       email: email,
       password: passwordHash,
+      store: false,
     };
     const result = await User.create(userArray);
-    res.send(result);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(JSON.stringify({ message: "Internal server error" }));
+    res.json({ email: result.email, password: result.password, store: false });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
@@ -98,7 +100,7 @@ async function patch(req, res) {
     res.send(result);
   } catch (e) {
     console.log(e);
-    res.status(500).send(JSON.stringify({ message: "Internal server error" }));
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
@@ -109,7 +111,7 @@ async function destroy(req, res) {
     res.send(result);
   } catch (e) {
     console.log(e);
-    res.status(500).send(JSON.stringify({ message: "Internal server error" }));
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
