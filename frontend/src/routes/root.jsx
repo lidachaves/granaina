@@ -66,9 +66,9 @@ function Root() {
                 <Offer />
                 <CardCarousel />
                 <Section />
-              
-                <Footer />
+
             </div>
+            <Footer />
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
             {/* <Section /> */} {/*  componente Features aquí */}
         </div>
