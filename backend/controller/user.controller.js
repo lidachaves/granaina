@@ -42,7 +42,7 @@ async function login(req, res) {
   }
 }
 
-async function register(req, res) {
+async function signup(req, res) {
   try {
     const { username, name, email, password } = req.body;
     if (!username || !name || !email || !password) {
@@ -101,4 +101,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, login, register, patch, destroy };
+module.exports = { get, login, signup, patch, destroy };
