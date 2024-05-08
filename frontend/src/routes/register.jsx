@@ -15,7 +15,7 @@ function Register() {
     const [password, setPassword] = useState("")
     const [passwordScore, setPasswordScore] = useState(0)
     const { signup, error, isLoading } = useSignup("")
-    const passwordScoreColorArray = ['red-400', 'red-400', 'green-600', 'green-600', 'blue-400']
+    const passwordScoreColorArray = ['red-400', 'red-400', 'yellow-500', 'green-600', 'blue-400']
     const passwordScoreColor = passwordScoreColorArray[passwordScore]
     const minPasswordScore = 2
 
@@ -26,7 +26,7 @@ function Register() {
     }
     return (
         <div className="App" >
-            {/* bg-red-400 bg-blue-400 bg-green-600 */}
+            {/* bg-red-400 bg-blue-400 bg-green-600 bg-yellow-500 */}
             <Header /> {/* Esta funcion que meti es para controlar el modal como una prop */}
             <div className="flex justify-center items-center p-6">
                 <div className="w-96 rounded-lg shadow-lg p-4">
