@@ -70,6 +70,7 @@ function Root() {
                 <TemplateDemo />  
                 <Footer />
             </div>
+            <Footer />
             {/* <CardCarousel /> */} {/*  componente Novedades aquí */}
             {/* <Section /> */} {/*  componente Features aquí */}
         </div>

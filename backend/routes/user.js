@@ -8,7 +8,7 @@ userController = require("../controller/user.controller");
 
 router.get("/:username", userController.get);
 
-router.post("/register", userController.register);
+router.post("/signup", userController.signup);
 
 router.post("/login", userController.login);
 

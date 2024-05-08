@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import ReactDOM from 'react-dom/client'
+import React from 'react';
 import Root from './routes/root.jsx'
 import './index.css'
 import {
@@ -8,20 +7,17 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+
+// Pages
+import AboutUs from './routes/about.jsx'
+import AccountPage from './routes/accountPage';
 import ErrorPage from './routes/error-page.jsx';
 import Login from './routes/login.jsx';
-import Register from './routes/register.jsx';
-import { useAuthContext } from "./hooks/useAuthContext";
-import AccountPage from './routes/accountPage';
-import AboutUs from './routes/about.jsx'
 import ProductPage from './routes/productPage.jsx';
+import Register from './routes/register.jsx';
+import RegisterStore from './routes/registerStore.jsx'
 import StorePage from './routes/storePage.jsx';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './COMPONENTES/header.jsx';
-import Carousel from './COMPONENTES/carousel.jsx';
-import Offer from './COMPONENTES/service.jsx';
-import CardCarousel from './COMPONENTES/novedades.jsx';
-import Section from './COMPONENTES/feactures.jsx';
 
 function App() {
   const { user } = useAuthContext()
@@ -33,6 +29,8 @@ function App() {
           <Route path="/" element={<Root />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+          <Route path="/registerstore" element={!user ? <RegisterStore /> : <Navigate to="/" />} />
+          <Route path="/storepanel" element={user && user.store == true ? <RegisterStore /> : <Navigate to="/login" />} />
           <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/login" />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/product/:URLName" element={<ProductPage />} />

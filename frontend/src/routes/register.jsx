@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import Header from '../COMPONENTES/header';
-import { useLogin } from '../hooks/useLogin'
+import { useSignup } from '../hooks/useSignup'
 // import 'tailwindcss/tailwind.css';
 // import Footer from '../COMPONENTES/footer.jsx';
 import { Link } from 'react-router-dom';
+import zxcvbn from "zxcvbn";
+
 
 
 function Register() {
@@ -11,16 +13,20 @@ function Register() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const { login, error, isLoading } = useLogin("")
-
+    const [passwordScore, setPasswordScore] = useState(0)
+    const { signup, error, isLoading } = useSignup("")
+    const passwordScoreColorArray = ['red-400', 'red-400', 'yellow-500', 'green-600', 'blue-400']
+    const passwordScoreColor = passwordScoreColorArray[passwordScore]
+    const minPasswordScore = 2
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await login(email, password);
+        await signup(email, password, name, username);
     }
     return (
-        <div className="App">
+        <div className="App" >
+            {/* bg-red-400 bg-blue-400 bg-green-600 bg-yellow-500 */}
             <Header /> {/* Esta funcion que meti es para controlar el modal como una prop */}
             <div className="flex justify-center items-center p-6">
                 <div className="w-96 rounded-lg shadow-lg p-4">
@@ -54,26 +60,35 @@ function Register() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <label htmlFor="password">Contraseña</label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            type="password"
-                            placeholder="Contraseña"
-                            name="password"
-                            defaultValue={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="relative">
+                            <input
+                                className="appearance-none block w-full bg-gray-200 text-gray-700 rounded pt-3 pb-6 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                type="password"
+                                placeholder="Contraseña"
+                                name="password"
+                                defaultValue={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                    setPasswordScore(zxcvbn(e.target.value).score)
+                                }}
+                            />
+                            <div className="flex h-2 overflow-hidden rounded absolute bottom-1 left-1 right-1 bg-gray-200">
+                                <span style={{ width: ((passwordScore + 1) * 20) + '%' }} className={"bg-" + passwordScoreColor}></span>
+                            </div>
+                        </div>
                         {/* <Link to="/forgotpassword" className="text-blue-500 text-sm">¿Olvidaste tu contraseña?</Link> */}
                         <Link to="/login" className="text-blue-500 text-sm">Iniciar sesión</Link>
                         <button
                             className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-blue-500/40"
-                            disabled={isLoading}
+                            disabled={isLoading || passwordScore < minPasswordScore}
                         >
                             Crear una cuenta
                         </button>
                     </form>
+                    {error ? error : ""}
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
 
     );
 }
