@@ -86,7 +86,7 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-
+            <Offer />
             <Footer />
         </div>
     );
