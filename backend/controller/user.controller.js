@@ -13,7 +13,13 @@ async function get(req, res) {
       res.status(404).json({ error: "The user does not exist" });
       return;
     }
-    res.status(200).send({ username: user.username, name: user.name });
+    let storeInfo = {};
+    if (user.store) {
+      storeInfo = { verified: user.verified };
+    }
+    res
+      .status(200)
+      .send({ username: user.username, name: user.name, ...storeInfo });
   } catch (e) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -49,16 +55,25 @@ async function login(req, res) {
 
 async function signup(req, res) {
   try {
-    const { username, name, email, password } = req.body;
+    const { username, name, email, password, store } = req.body;
     if (!username || !name || !email || !password) {
       res.status(400).json({ error: "Missing parameters" });
       return;
     }
 
-    const usernameInfo = await User.find({ username: username });
+    const usernameInfo = await User.find({
+      username: username,
+    });
     console.log(usernameInfo.length);
     if (usernameInfo.length) {
       res.status(400).json({ error: "The username is already taken." });
+      return;
+    }
+    const emailInfo = await User.find({
+      email: email,
+    });
+    if (emailInfo.length) {
+      res.status(400).json({ error: "The email is already in use." });
       return;
     }
 
@@ -71,15 +86,33 @@ async function signup(req, res) {
     const salt = bcryptjs.genSaltSync(10);
     const passwordHash = await bcryptjs.hash(password, salt);
 
-    const userArray = {
-      username: username,
-      name: name,
-      email: email,
-      password: passwordHash,
-      store: false,
-    };
+    let userArray;
+
+    if (store) {
+      userArray = {
+        username: username,
+        name: name,
+        email: email,
+        password: passwordHash,
+        store: false,
+      };
+    } else {
+      userArray = {
+        username: username,
+        name: name,
+        email: email,
+        password: passwordHash,
+        store: true,
+        verified: false,
+      };
+    }
+
     const result = await User.create(userArray);
-    res.json({ email: result.email, password: result.password, store: false });
+    res.json({
+      email: result.email,
+      password: result.password,
+      store: store,
+    });
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal server error" });
