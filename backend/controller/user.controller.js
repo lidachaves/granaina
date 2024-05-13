@@ -94,7 +94,8 @@ async function signup(req, res) {
         name: name,
         email: email,
         password: passwordHash,
-        store: false,
+        store: true,
+        verified: false,
       };
     } else {
       userArray = {
@@ -102,8 +103,7 @@ async function signup(req, res) {
         name: name,
         email: email,
         password: passwordHash,
-        store: true,
-        verified: false,
+        store: false,
       };
     }
 
