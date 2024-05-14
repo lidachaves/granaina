@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../COMPONENTES/header.jsx';
+import Footer from '../COMPONENTES/footer.jsx';
+
 
 const products = [
     {
@@ -64,28 +66,26 @@ const SearchPage = () => {
                         </div>
                         <hr className="my-4 border-gray-600" />
                     </div>
+
+                    
                     <div className="sidebody h-3/4">
-                        <div className="searchbar mb-4">
-                            <input
-                                className="w-full p-2 text-black"
-                                placeholder="Search..."
-                                id="searchBar"
-                                name="searchBar"
-                                type="text"
-                                onChange={handleSearch}
-                            />
-                            <i className="fa-solid fa-magnifying-glass glass"></i>
-                        </div>
-                    </div>
-                    <div className="sidefoot">
-                        <hr className="my-4 border-gray-600" />
-                        <div className="social-icons flex space-x-4">
-                            <i className="fa-brands fa-square-facebook"></i>
-                            <i className="fa-brands fa-youtube"></i>
-                            <i className="fa-brands fa-instagram"></i>
-                            <i className="fa-brands fa-whatsapp"></i>
-                        </div>
-                    </div>
+    <div className="searchbar mb-4 relative">
+        <input
+            className="w-full p-2 pr-8 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            placeholder="Search..."
+            id="searchBar"
+            name="searchBar"
+            type="text"
+            onChange={handleSearch}
+        />
+        <button className="absolute inset-y-0 right-0 flex items-center px-3 bg-gray-200 rounded-r-lg">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 15l-5-5m5 0l-5 5m5-5V3a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2h7a2 2 0 002-2z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
                 </div>
                 <div className="body w-3/4 p-4">
                     <div id="root" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -104,6 +104,7 @@ const SearchPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
