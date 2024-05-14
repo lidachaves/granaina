@@ -4,23 +4,22 @@ import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import 'tailwindcss/tailwind.css';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useLogout } from '../hooks/useLogout'
+import { useLogout } from '../hooks/useLogout';
 
 const Header = () => {
   const { user } = useAuthContext();
-  const { logout } = useLogout()
-  const [showCategories, setShowCategories] = useState(false)
+  const { logout } = useLogout();
+  const [showCategories, setShowCategories] = useState(false);
 
   const handleLogout = () => {
     logout();
-  }
+  };
 
   const toggleCategories = () => {
     setShowCategories(!showCategories);
   };
 
   const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6'];
-
 
   return (
     <header className="bg-gray-800 text-white flex py-3 justify-center px-4">
@@ -31,8 +30,8 @@ const Header = () => {
             <ul className="flex gap-5">
               <li><Link to="/" className="hover:text-gray-300">Home</Link></li>
               <li><Link to="/about" className="hover:text-gray-300">About</Link></li>
-              <li><Link href="#" className="hover:text-gray-300">Categories</Link></li>
-              <li><Link href="#" className="hover:text-gray-300">Promotions</Link></li>
+              <li><Link to="/search" className="hover:text-gray-300">Buscador</Link></li> {/* Updated Link */}
+              <li><Link to="#" className="hover:text-gray-300">Promotions</Link></li>
             </ul>
           </nav>
         </div>
@@ -51,7 +50,6 @@ const Header = () => {
           </div>
         )}
       </div>
-
     </header>
   );
 };
