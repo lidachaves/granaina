@@ -13,7 +13,6 @@ import ProductPage from "./routes/productPage.jsx";
 import Register from "./routes/register.jsx";
 import RegisterStore from "./routes/registerStore.jsx";
 import StorePage from "./routes/storePage.jsx";
-import StorePanel from "./routes/storePanel.jsx";
 import StorePanelPage from "./routes/storePanelPage.jsx";
 import SearchPage from "./routes/searchPage.jsx"; // Importa la nueva página de búsqueda
 
