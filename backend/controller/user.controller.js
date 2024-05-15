@@ -55,10 +55,14 @@ async function login(req, res) {
 
 async function signup(req, res) {
   try {
-    const { username, name, email, password, store } = req.body;
-    if (!username || !name || !email || !password) {
+    let { username, name, email, password, store } = req.body;
+    if (!name || !email || !password) {
       res.status(400).json({ error: "Missing parameters" });
       return;
+    }
+
+    if (!username) {
+      username = name.replaceAll(" ", "_").toLowerCase();
     }
 
     const usernameInfo = await User.find({

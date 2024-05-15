@@ -6,7 +6,7 @@ import { useSignup } from "../hooks/useSignup";
 import { Link } from "react-router-dom";
 
 function RegisterStore() {
-  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +15,7 @@ function RegisterStore() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(email, password, username, name, true);
+    await signup(email, password, null, name, true);
   };
   return (
     <div className="App">
@@ -51,14 +51,14 @@ function RegisterStore() {
               defaultValue={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="username">URL de la tienda</label>
+            <label htmlFor="phoneNumber">Numero de teléfono</label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="text"
-              placeholder="URL de la tienda"
-              name="username"
-              defaultValue={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Numero de teléfono"
+              name="phoneNumber"
+              defaultValue={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
             {/* <Link to="/forgotpassword" className="text-blue-500 text-sm">¿Olvidaste tu contraseña?</Link> */}
             <p className="text-sm">
