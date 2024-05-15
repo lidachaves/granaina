@@ -4,10 +4,6 @@ const User = require("../model/user.model");
 async function search(req, res) {
   try {
     let { query } = req.query;
-    if (!query) {
-      query = "";
-    }
-    console.log(".*" + query + ".*");
     const productsInfo = await Product.find({
       name: { $regex: ".*" + query + ".*", $options: "i" },
     });
