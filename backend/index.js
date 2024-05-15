@@ -32,6 +32,7 @@ mongoose
 
 const product = require("./routes/product");
 const user = require("./routes/user");
+const search = require("./routes/search");
 
 app.get("/", (req, res) => {
   // const passwordScore = zxcvbn("Tr0ub4dour&3").score
@@ -44,3 +45,4 @@ app.get("/", (req, res) => {
 
 app.use("/api/products/", product);
 app.use("/api/users/", user);
+app.use("/api/search", search);
