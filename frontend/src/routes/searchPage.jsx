@@ -127,25 +127,26 @@ const SearchPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {products.map((product) => (
-              <div
-                key={product._id}
-                className="box border p-4 rounded-lg shadow-lg"
-              >
-                <div className="img-box">
-                  <img
-                    className="images w-full h-48 object-cover"
-                    src={product.image}
-                    alt={product.name}
-                  />
-                </div>
-                <div className="bottom mt-4">
-                  <p>{product.name}</p>
-                  {/* <h2 className="text-lg font-bold">${product.price}.00</h2> */}
-                  <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
-                    Add to cart
-                  </button>
-                </div>
-              </div>
+              // <div
+              //   key={product._id}
+              //   className="box border p-4 rounded-lg shadow-lg"
+              // >
+              //   <div className="img-box">
+              //     <img
+              //       className="images w-full h-48 object-cover"
+              //       src={product.image}
+              //       alt={product.name}
+              //     />
+              //   </div>
+              //   <div className="bottom mt-4">
+              //     <p>{product.name}</p>
+              //     {/* <h2 className="text-lg font-bold">${product.price}.00</h2> */}
+              //     <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+              //       Add to cart
+              //     </button>
+              //   </div>
+              // </div>
+              <ProductCard key={product._id} productInfo={product} />
             ))}
           </div>
         </div>
