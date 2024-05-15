@@ -46,7 +46,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/search" className="hover:text-gray-300">
+                <Link to="/search" className="hover:text-gray-300">
                   Buscador
                 </Link>
               </li>
