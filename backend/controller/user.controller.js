@@ -7,19 +7,21 @@ const minPasswordScore = 2;
 
 async function get(req, res) {
   try {
-    const user = await User.findOne({ email: req.user.email });
-    if (!user) {
+    const user = req.user;
+    const userInfo = await User.findOne({ email: user.email });
+    if (!userInfo) {
       res.status(404).json({ error: "The user does not exist" });
       return;
     }
     let storeInfo = {};
-    if (user.store) {
-      storeInfo = { verified: user.verified };
+    if (userInfo.store) {
+      storeInfo = { verified: userInfo.verified };
     }
     res
       .status(200)
-      .send({ username: user.username, name: user.name, ...storeInfo });
+      .json({ username: userInfo.username, name: userInfo.name, ...storeInfo });
   } catch (e) {
+    console.log(e);
     res.status(500).json({ error: "Internal server error" });
   }
 }
@@ -31,23 +33,23 @@ async function login(req, res) {
       res.status(400).json({ error: "Missing parameters" });
       return;
     }
-    const user = await User.findOne({ email });
-    if (!user) {
+    const userInfo = await User.findOne({ email });
+    if (!userInfo) {
       res.status(400).json({ error: "Incorrect email or password" });
       return;
     }
-    const correctPassword = await bcryptjs.compare(password, user.password);
+    const correctPassword = await bcryptjs.compare(password, userInfo.password);
     if (!correctPassword) {
       res.status(400).json({ error: "Incorrect email or password" });
       return;
     }
     res.status(200).json({
       token: jwt.createToken(user, "24h"),
-      email: user.email,
-      store: user.store ? true : false,
+      email: userInfo.email,
+      store: userInfo.store ? true : false,
     });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.log(e);
     res.status(500).json({ error: "Internal server error" });
   }
 }
