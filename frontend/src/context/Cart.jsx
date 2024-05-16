@@ -6,7 +6,7 @@ const getInitialState = () => {
   try {
     return JSON.parse(window.localStorage.getItem("storeCart")) || [];
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return [];
   }
 };
