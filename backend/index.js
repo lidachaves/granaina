@@ -6,17 +6,12 @@ const port = 5000;
 const cors = require("cors");
 
 const helmet = require("helmet");
-
-const zxcvbn = require("zxcvbn");
-
 app.use(helmet());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// app.use((req, res, next) => {
-//   console.log(req);
-//   next();
-// });
+app.disable("x-powered-by");
 
 const mongoose = require("mongoose");
 
