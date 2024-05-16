@@ -10,6 +10,7 @@ import Section from '../COMPONENTES/feactures.jsx';
 import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
 import Footer from '../COMPONENTES/footer.jsx';
 import PurchaseTimeline from '../COMPONENTES/process.jsx';
+import Morecards from '../COMPONENTES/morecards.jsx';   
 
 
 
@@ -69,6 +70,7 @@ function Root() {
                 <CardCarousel />
                 <Section />
                <PurchaseTimeline />
+                <Morecards />
                 <Footer />
             </div>
         </div>
