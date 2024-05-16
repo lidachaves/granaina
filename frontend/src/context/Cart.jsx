@@ -2,6 +2,21 @@ import { createContext, useReducer, useEffect } from "react";
 
 export const CartContext = createContext();
 
+const getInitialState = () => {
+  try {
+    return JSON.parse(window.localStorage.getItem("storeCart")) || [];
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
+const initialState = getInitialState();
+
+const updateCartData = (state) => {
+  window.localStorage.setItem("storeCart", JSON.stringify(state));
+};
+
 export const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
@@ -21,6 +36,7 @@ export const cartReducer = (state, action) => {
           }
           return product;
         });
+        updateCartData(newState);
         return newState;
       } else {
         // Si el producto no esta en el carrito
@@ -31,6 +47,7 @@ export const cartReducer = (state, action) => {
             quantity: 1,
           },
         ];
+        updateCartData(newState);
         return newState;
       }
     }
@@ -51,18 +68,22 @@ export const cartReducer = (state, action) => {
           }
           return product;
         });
+        updateCartData(newState);
         return newState;
       } else {
         // Si el producto no esta en el carrito
+        updateCartData(newState);
         return state;
       }
     }
     case "REMOVE_FROM_CART": {
       const { _id } = action.payload;
       const newState = state.filter((product) => product._id !== _id);
+      updateCartData(newState);
       return newState;
     }
     case "CLEAR_CART":
+      updateCartData(newState);
       return [];
     default:
       return state;
@@ -70,7 +91,7 @@ export const cartReducer = (state, action) => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, []);
+  const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
