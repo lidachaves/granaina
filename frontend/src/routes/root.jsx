@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import ProductCard from '../COMPONENTES/tarjeta.jsx';  
+import { useState, useEffect } from "react";
+import ProductCard from "../COMPONENTES/tarjeta.jsx";
 // import 'tailwindcss/tailwind.css';
 import Header from '../COMPONENTES/header.jsx';
 import Login from '../COMPONENTES/LOGIN.jsx';
@@ -16,34 +16,34 @@ import Morecards from '../COMPONENTES/morecards.jsx';
 
 
 function Root() {
-    const [productsInfo, setProductsInfo] = useState(null)
+  const [productsInfo, setProductsInfo] = useState(null);
 
-    // Aca defini las diapositivas para el Carousel
-    const slides = [
-        <div key="1">Slide 1</div>,
-        <div key="2">Slide 2</div>,
-        <div key="3">Slide 3</div>,
-    ];
+  // Aca defini las diapositivas para el Carousel
+  const slides = [
+    <div key="1">Slide 1</div>,
+    <div key="2">Slide 2</div>,
+    <div key="3">Slide 3</div>,
+  ];
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:5000/api/products");
-                const json = await response.json()
-                if (response.ok) {
-                    setProductsInfo(json)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/products");
+        const json = await response.json();
+        if (response.ok) {
+          setProductsInfo(json);
         }
-        fetchData()
-    }, [])
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
-    return (
-        <div className="App">
-            <Header />
-            {/* <div className="flex justify-center mt-8">
+  return (
+    <div className="App">
+      <Header />
+      {/* <div className="flex justify-center mt-8">
                 <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
             </div> */}
             {/* <Offer /> */}
@@ -70,7 +70,6 @@ function Root() {
                 <CardCarousel />
                 <Section />
                <PurchaseTimeline />
-                <Morecards />
                 <Footer />
             </div>
         </div>
@@ -78,4 +77,4 @@ function Root() {
     );
 }
 
-export default Root
+export default Root;

@@ -55,10 +55,14 @@ async function login(req, res) {
 
 async function signup(req, res) {
   try {
-    const { username, name, email, password, store } = req.body;
-    if (!username || !name || !email || !password) {
+    let { username, name, email, password, store } = req.body;
+    if (!name || !email || !password) {
       res.status(400).json({ error: "Missing parameters" });
       return;
+    }
+
+    if (!username) {
+      username = name.replaceAll(" ", "_").toLowerCase();
     }
 
     const usernameInfo = await User.find({
@@ -66,14 +70,24 @@ async function signup(req, res) {
     });
     console.log(usernameInfo.length);
     if (usernameInfo.length) {
-      res.status(400).json({ error: "The username is already taken." });
+      res.status(400).json({
+        error: {
+          // message: "The username is already taken.",
+          username: "The username is already taken",
+        },
+      });
       return;
     }
     const emailInfo = await User.find({
       email: email,
     });
     if (emailInfo.length) {
-      res.status(400).json({ error: "The email is already in use." });
+      res.status(400).json({
+        error: {
+          // message: "The email is already in use.",
+          email: "The email is already in use",
+        },
+      });
       return;
     }
 
