@@ -44,5 +44,5 @@ app.use((req, res, next) => {
 // Custom errro handler message
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: "Something went wrong" });
+  res.status(500).json({ error: "Internal server error" });
 });
