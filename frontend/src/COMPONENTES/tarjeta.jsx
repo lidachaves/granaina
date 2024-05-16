@@ -14,7 +14,6 @@ const ProductCard = ({ productInfo }) => {
   };
 
   const handleRemoveOneItemFromCart = () => {
-    console.log(productInfo);
     removeOneItemFromCart(productInfo);
   };
 

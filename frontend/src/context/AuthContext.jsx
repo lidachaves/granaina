@@ -24,9 +24,6 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
-  console.log(localStorage.getItem('user'))
-  console.log("AuthContext state: ", state);
-
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}
