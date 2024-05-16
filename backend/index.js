@@ -5,8 +5,11 @@ const app = express();
 const port = 5000;
 const cors = require("cors");
 
+const helmet = require("helmet");
+
 const zxcvbn = require("zxcvbn");
 
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
