@@ -40,7 +40,7 @@ const ProductCard = ({ productInfo }) => {
         {/* <p className="text-sm text-gray-500 mt-2">{productInfo.description}</p> */}
         <Link
           className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center"
-          to={"product/" + productInfo.URLName}
+          to={"/product/" + productInfo.URLName}
         >
           Ver detalle
         </Link>
