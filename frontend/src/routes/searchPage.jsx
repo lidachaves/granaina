@@ -63,6 +63,7 @@ const SearchPage = () => {
   useEffect(() => fetchData, []);
 
   const handleFetch = async (e) => {
+    e.preventDefault();
     await fetchData();
     // setSearchTerm(e.target.value.toLowerCase());
   };
@@ -90,7 +91,7 @@ const SearchPage = () => {
           </div>
 
           <div className="sidebody h-3/4">
-            <div className="searchbar mb-4 relative">
+            <form className="searchbar mb-4 relative" onSubmit={handleFetch}>
               <input
                 className="w-full p-2 pr-8 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                 placeholder="Search..."
@@ -100,8 +101,8 @@ const SearchPage = () => {
                 onChange={handleSearch}
               />
               <button
+                type="submit"
                 className="absolute inset-y-0 right-0 flex items-center px-3 bg-gray-200 rounded-r-lg"
-                onClick={handleFetch}
               >
                 <svg
                   className="w-5 h-5 text-gray-600"
@@ -118,7 +119,7 @@ const SearchPage = () => {
                   ></path>
                 </svg>
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <div className="body w-3/4 p-4">
