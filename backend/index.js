@@ -46,3 +46,14 @@ app.get("/", (req, res) => {
 app.use("/api/products/", product);
 app.use("/api/users/", user);
 app.use("/api/search", search);
+
+// Custom 404 message
+app.use((req, res, next) => {
+  res.status(404).json({ error: "Page not found" });
+});
+
+// Custom errro handler message
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong" });
+});
