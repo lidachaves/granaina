@@ -5,10 +5,10 @@ export default function Section() {
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Los estilos de verano finalmente están aquí 
+           Crea tu tienda en simples pasos. 
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-            Este año, nuestra nueva colección de verano te protegerá de los duros elementos de un mundo al que no le importa si vives o mueres.
+            Tu propia tienda en línea es fácil y rápido. Solo necesitas unos pocos minutos para registrarte, configurar tu tienda y empezar a vender.
             </p>
           </div>
           <div>
@@ -80,11 +80,28 @@ export default function Section() {
               </div>
 
               <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
-              >
-                Visitar tienda 
-              </a>
+  class="group relative inline-flex items-center overflow-hidden rounded border border-current px-8 py-3 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+  href="#"
+>
+  <span class="absolute -start-full transition-all group-hover:start-4">
+    <svg
+      class="size-5 rtl:rotate-180"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M17 8l4 4m0 0l-4 4m4-4H3"
+      />
+    </svg>
+  </span>
+
+  <span class="text-sm font-medium transition-all group-hover:ms-4"> Crear tienda</span>
+</a>
             </div>
           </div>
         </div>
