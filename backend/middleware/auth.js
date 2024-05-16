@@ -5,10 +5,11 @@ const jwt = require("../services/jwt");
 const SECRET_KEY = "SECRET_KEY";
 
 function ensureAuth(req, res, next) {
-  if (!req.headers.authoritation) {
+  if (!req.headers.authorization) {
     return res.status(403).send({ msg: "You're not authenticated." });
   }
-  const token = req.headers.authoritation.replace(/['"]+/g, "");
+
+  const token = req.headers.authorization.split(" ")[1];
 
   const payload = jwt.decodeToken(token, SECRET_KEY);
   try {

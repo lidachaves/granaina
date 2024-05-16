@@ -7,8 +7,7 @@ const minPasswordScore = 2;
 
 async function get(req, res) {
   try {
-    const { username: usernameParameter } = req.params;
-    const user = await User.findOne({ username: usernameParameter });
+    const user = await User.findOne({ email: req.user.email });
     if (!user) {
       res.status(404).json({ error: "The user does not exist" });
       return;
@@ -135,15 +134,12 @@ async function signup(req, res) {
 
 async function patch(req, res) {
   try {
-    const { username, name, email } = req.body;
     const user = req.user;
+    const { name } = req.body;
     const userArray = {
-      username: username,
       name: name,
-      email: email,
-      password: user.password,
     };
-    const result = await User.updateOne({ _id: user.id }, userArray);
+    const result = await User.updateOne({ email: user.email }, userArray);
     res.send(result);
   } catch (e) {
     console.log(e);

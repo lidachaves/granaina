@@ -6,14 +6,14 @@ router = express.Router();
 
 userController = require("../controller/user.controller");
 
-router.get("/:username", userController.get);
+router.get("/", [ensureAuth], userController.get);
 
 router.post("/signup", userController.signup);
 
 router.post("/login", userController.login);
 
-router.patch("/:username", [ensureAuth], userController.patch);
+router.patch("/", [ensureAuth], userController.patch);
 
-router.delete("/:username", [ensureAuth], userController.destroy);
+router.delete("/", [ensureAuth], userController.destroy);
 
 module.exports = router;
