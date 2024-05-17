@@ -55,8 +55,9 @@ const ProductCard = ({ productInfo }) => {
               </button>
               {cartProduct.quantity}
               <button
-                className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center"
+                className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center disabled:bg-gray-300"
                 onClick={handleRemoveOneItemFromCart}
+                disabled={cartProduct.quantity <= 1}
               >
                 -
               </button>
