@@ -1,351 +1,128 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import Header from '../COMPONENTES/header.jsx';
-import { useLogin } from '../hooks/useLogin.js'
-// import 'tailwindcss/tailwind.css';
-// import Footer from '../COMPONENTES/footer.jsx';
+import { useLogin } from '../hooks/useLogin.js';
 import { Link } from 'react-router-dom';
 
-
 function StorePanelPage() {
-
     const handleSubmit = async (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
         await login(email, password);
     }
+
     return (
         <>
             <Header />
-            <div class="flex">
-  <div class="flex h-screen w-16 flex-col justify-between border-e bg-white">
-    <div>
-      <div class="inline-flex size-16 items-center justify-center">
-        <span
-          class="grid size-10 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600"
-        >
-          L
-        </span>
-      </div>
+            {/* sidebar */}
+            <div className="bg-gray-100 h-screen font-sans flex">
+                <div className="bg-gray-800 text-white w-64 p-6 flex flex-col">
+                    <div className="text-2xl font-bold mb-8">Admin Panel</div>
+                    <nav>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Dashboard</a>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Clientes</a>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Productos</a>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Ordenes</a>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Payments</a>
+                        <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Ajustes</a>
+                    </nav>
+                    <div className="mt-auto">
+                        <button className="bg-red-500 text-white px-4 py-2 rounded w-full hover:bg-red-600">Logout</button>
+                    </div>
+                </div>
+                <div className="flex-1 p-6">
+                    <div className="flex justify-between items-center mb-6">
+                        <h1 className="text-3xl font-semibold">Dashboard</h1>
+                              {/* BUSCADOR */}
+                        <div>
+                            <input type="text" placeholder="Search..." className="border rounded py-2 px-3" />
+                            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-2">Search</button>
+                        </div>
+                    </div>
 
-      <div class="border-t border-gray-100">
-        <div class="px-2">
-          <div class="py-4">
-            <a
-              href="#"
-              class="t group relative flex justify-center rounded bg-blue-50 px-2 py-1.5 text-blue-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-5 opacity-75"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-
-              <span
-                class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-              >
-                General
-              </span>
-            </a>
-          </div>
-
-          <ul class="space-y-1 border-t border-gray-100 pt-4">
-            <li>
-              <a
-                href="#"
-                class="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-5 opacity-75"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-
-                <span
-                  class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-                >
-                  Clientes
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                class="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-5 opacity-75"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                  />
-                </svg>
-
-                <span
-                  class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-                >
-                  Facturacion
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                class="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-5 opacity-75"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-
-                <span
-                  class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-                >
-                Productos
-                </span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                class="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-5 opacity-75"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-
-                <span
-                  class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-                >
-                  Account
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white p-2">
-      <form action="#">
-        <button
-          type="submit"
-          class="group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-5 opacity-75"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
-
-          <span
-            class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
-          >
-            Logout
-          </span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <div class="flex h-screen flex-col justify-between border-e bg-white">
-    <div class="px-4 py-6">
-      <ul class="mt-14 space-y-1">
-        <li>
-          <a
-            href="#"
-            class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
-          >
-            General
-          </a>
-        </li>
-
-        <li>
-          <details class="group [&_summary::-webkit-details-marker]:hidden">
-            <summary
-              class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
-              <span class="text-sm font-medium"> Mis productos </span>
-
-              <span class="shrink-0 transition duration-300 group-open:-rotate-180">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <ul class="mt-2 space-y-1 px-4">
-              <li>
-                <a
-                  href="#"
-                  class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                >
-                  Administrar productos
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                >
-                Pedidos
-                </a>
-              </li>
-            </ul>
-          </details>
-        </li>
-
-        <li>
-          <a
-            href="#"
-            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-          >
-            facturación
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="#"
-            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-          >
-            Clientes.
-          </a>
-        </li>
-
-        <li>
-          <details class="group [&_summary::-webkit-details-marker]:hidden">
-            <summary
-              class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
-              <span class="text-sm font-medium"> Cuenta 💳 </span>
-
-              <span class="shrink-0 transition duration-300 group-open:-rotate-180">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </span>
-            </summary>
-
-            <ul class="mt-2 space-y-1 px-4">
-              <li>
-                <a
-                  href="#"
-                  class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                >
-                  Details
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                >
-                  Security
-                </a>
-              </li>
-
-              <li>
-                <form action="#">
-                  <button
-                    type="submit"
-                    class="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
-                  >
-                    Logout
-                  </button>
-                </form>
-              </li>
-            </ul>
-          </details>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                        {/* CONTENIDO DEL DASHBOARD */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                            <h2 className="text-xl font-bold mb-2">Total Sales</h2>
+                            <p className="text-gray-700">$23,456</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                            <h2 className="text-xl font-bold mb-2">Total Orders</h2>
+                            <p className="text-gray-700">1,234</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                            <h2 className="text-xl font-bold mb-2">Total Products</h2>
+                            <p className="text-gray-700">567</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                            <h2 className="text-xl font-bold mb-2">Total Users</h2>
+                            <p className="text-gray-700">789</p>
+                        </div>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
+                        <h2 className="text-2xl font-bold mb-4">Recent Users</h2>
+                        <table className="min-w-full bg-white">
+                            <thead className="bg-gray-800 text-white">
+                                <tr>
+                                    <th className="w-1/3 px-4 py-2">Name</th>
+                                    <th className="w-1/3 px-4 py-2">Email</th>
+                                    <th className="w-1/3 px-4 py-2">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-700">
+                                <tr>
+                                    <td className="border px-4 py-2">Escaloneta</td>
+                                    <td className="border px-4 py-2">DS10@example.com</td>
+                                    <td className="border px-4 py-2">Admin</td>
+                                </tr>
+                                <tr className="bg-gray-100">
+                                    <td className="border px-4 py-2">Jane Smith</td>
+                                    <td className="border px-4 py-2">DS10@example.com</td>
+                                    <td className="border px-4 py-2">User</td>
+                                </tr>
+                                <tr>
+                                    <td className="border px-4 py-2">Escaloneta</td>
+                                    <td className="border px-4 py-2">bob@example.com</td>
+                                    <td className="border px-4 py-2">User</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
+                        <table className="min-w-full bg-white">
+                            <thead className="bg-gray-800 text-white">
+                                <tr>
+                                    <th className="w-1/4 px-4 py-2">Order ID</th>
+                                    <th className="w-1/4 px-4 py-2">Customer</th>
+                                    <th className="w-1/4 px-4 py-2">Amount</th>
+                                    <th className="w-1/4 px-4 py-2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-700">
+                                <tr>
+                                    <td className="border px-4 py-2">12345</td>
+                                    <td className="border px-4 py-2">KEVIN</td>
+                                    <td className="border px-4 py-2">$100</td>
+                                    <td className="border px-4 py-2">Pending</td>
+                                </tr>
+                                <tr className="bg-gray-100">
+                                    <td className="border px-4 py-2">12346</td>
+                                    <td className="border px-4 py-2">Rafaelo</td>
+                                    <td className="border px-4 py-2">$150</td>
+                                    <td className="border px-4 py-2">Completed</td>
+                                </tr>
+                                <tr>
+                                    <td className="border px-4 py-2">12347</td>
+                                    <td className="border px-4 py-2">Rafaelo</td>
+                                    <td className="border px-4 py-2">$200</td>
+                                    <td className="border px-4 py-2">Processing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
 
-export default StorePanelPage
+export default StorePanelPage;

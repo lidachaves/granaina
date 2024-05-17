@@ -4,15 +4,15 @@ import { faShoppingCart, faCreditCard, faTruck, faCheck } from '@fortawesome/fre
 
 const PurchaseTimeline = () => {
     const steps = [
-        { number: '1', title: 'Ordered', description: 'Seleccione los productos que desea comprar.', icon: faShoppingCart },
-        { number: '2', title: 'Processing', description: 'Confirme su compra y seleccione el método de pago.', icon: faCreditCard },
-        { number: '3', title: 'Shipped', description: 'Realice el pago de su compra.', icon: faTruck },
-        { number: '4', title: 'Delivered', description: 'Su pedido ha sido enviado.', icon: faCheck }
+        { number: '1', title: 'Orden', description: 'Seleccione los productos que desea comprar.', icon: faShoppingCart },
+        { number: '2', title: 'Proceso', description: 'Confirme su compra y seleccione el método de pago.', icon: faCreditCard },
+        { number: '3', title: 'Envio', description: 'Realice el pago de su compra.', icon: faTruck },
+        { number: '4', title: 'Entrega', description: 'Su pedido ha sido enviado.', icon: faCheck }
     ];
 
     return (
         <div className="max-w-4xl mx-auto py-6 px-4 text-center">
-            <h2 className="text-2xl font-bold mb-4">Your purchase in simple steps</h2>
+            <h2 className="text-2xl font-bold mb-4">Tu compra en simples pasos</h2>
             <div className="relative">
                 {/* Steps */}
                 {steps.map((step, index) => (
