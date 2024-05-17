@@ -1,48 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../COMPONENTES/header.jsx";
 import Footer from "../COMPONENTES/footer.jsx";
-
-const products = [
-  {
-    id: 0,
-    image: "/path/to/your/image/gg-1.jpg",
-    title: "Z Flip Foldable Mobile",
-    price: 120,
-  },
-  {
-    id: 1,
-    image: "/path/to/your/image/hh-2.jpg",
-    title: "Air Pods Pro",
-    price: 60,
-  },
-  {
-    id: 2,
-    image: "/path/to/your/image/ee-3.jpg",
-    title: "250D DSLR Camera",
-    price: 230,
-  },
-  {
-    id: 3,
-    image: "/path/to/your/image/aa-1.jpg",
-    title: "Headphones",
-    price: 100,
-  },
-  {
-    id: 4,
-    image: "/path/to/your/image/bb-1.jpg",
-    title: "Audio Microphone",
-    price: 230,
-  },
-  {
-    id: 5,
-    image: "/path/to/your/image/cc-1.jpg",
-    title: "Smart Watch",
-    price: 100,
-  },
-];
+import ProductCard from "../COMPONENTES/tarjeta.jsx";
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -70,9 +33,9 @@ const SearchPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm)
-  );
+  // const filteredProducts = products.filter((product) =>
+  //   product.title.toLowerCase().includes(searchTerm)
+  // );
 
   return (
     <div className="App">
@@ -125,28 +88,32 @@ const SearchPage = () => {
             id="root"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           >
-            {products.map((product) => (
-              // <div
-              //   key={product._id}
-              //   className="box border p-4 rounded-lg shadow-lg"
-              // >
-              //   <div className="img-box">
-              //     <img
-              //       className="images w-full h-48 object-cover"
-              //       src={product.image}
-              //       alt={product.name}
-              //     />
-              //   </div>
-              //   <div className="bottom mt-4">
-              //     <p>{product.name}</p>
-              //     {/* <h2 className="text-lg font-bold">${product.price}.00</h2> */}
-              //     <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
-              //       Add to cart
-              //     </button>
-              //   </div>
-              // </div>
-              <ProductCard key={product._id} productInfo={product} />
-            ))}
+            {products ? (
+              products.map((product) => (
+                // <div
+                //   key={product._id}
+                //   className="box border p-4 rounded-lg shadow-lg"
+                // >
+                //   <div className="img-box">
+                //     <img
+                //       className="images w-full h-48 object-cover"
+                //       src={product.image}
+                //       alt={product.name}
+                //     />
+                //   </div>
+                //   <div className="bottom mt-4">
+                //     <p>{product.name}</p>
+                //     {/* <h2 className="text-lg font-bold">${product.price}.00</h2> */}
+                //     <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
+                //       Add to cart
+                //     </button>
+                //   </div>
+                // </div>
+                <ProductCard key={product._id} productInfo={product} />
+              ))
+            ) : (
+              <div>No hay resultados</div>
+            )}
           </div>
         </div>
       </div>
