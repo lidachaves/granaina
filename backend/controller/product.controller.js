@@ -64,16 +64,21 @@ async function post(req, res) {
 async function patch(req, res) {
   try {
     const { product } = req.params;
+    const user = req.user;
     const { URLName, name, description, price } = req.body;
     const productInfo = await Product.find({ URLName: product });
-    const productArray = {
-      URLName: URLName,
-      name: name,
-      description: description,
-      price: price,
-    };
-    const result = await Product.updateOne(productInfo._id, productArray);
-    res.send(result);
+    if (user.id == productInfo.sellerId) {
+      const productArray = {
+        URLName: URLName,
+        name: name,
+        description: description,
+        price: price,
+      };
+      const result = await Product.updateOne(productInfo._id, productArray);
+      res.status(200).send(result);
+    } else {
+      res.status(400).json({ error: "This product isn't yours" });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));
@@ -83,8 +88,13 @@ async function patch(req, res) {
 async function destroy(req, res) {
   try {
     const { product } = req.params;
-    const result = await Product.deleteOne({ URLName: product });
-    res.send(result);
+    const user = req.user;
+    if (user.id == productInfo.sellerId) {
+      const result = await Product.deleteOne({ URLName: product });
+      res.send(result);
+    } else {
+      res.status(400).json({ error: "This product isn't yours" });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).send(JSON.stringify({ message: "Internal server error" }));

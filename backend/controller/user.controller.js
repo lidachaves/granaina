@@ -44,7 +44,7 @@ async function login(req, res) {
       return;
     }
     res.status(200).json({
-      token: jwt.createToken(user, "24h"),
+      token: jwt.createToken(userInfo, "24h"),
       email: userInfo.email,
       store: userInfo.store ? true : false,
     });
