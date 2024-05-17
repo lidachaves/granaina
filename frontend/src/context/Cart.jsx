@@ -59,17 +59,24 @@ export const cartReducer = (state, action) => {
 
       if (productInCartIndex >= 0) {
         // Si el producto ya esta en el carrito
-        const newState = state.map((product) => {
-          if (product._id === _id) {
-            return {
-              ...product,
-              quantity: product.quantity - 1,
-            };
-          }
-          return product;
-        });
-        updateCartData(newState);
-        return newState;
+        const productInfo = state[productInCartIndex];
+        if (productInfo.quantity > 1) {
+          // Si el producto del carrito tiene mas de una unidad
+          const newState = state.map((product) => {
+            if (product._id === _id) {
+              return {
+                ...product,
+                quantity: product.quantity - 1,
+              };
+            }
+            return product;
+          });
+          updateCartData(newState);
+          return newState;
+        } else {
+          // Si el producto del carrito no tiene mas de una unidad
+          return state;
+        }
       } else {
         // Si el producto no esta en el carrito
         updateCartData(newState);
