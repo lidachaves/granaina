@@ -1,49 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../COMPONENTES/header.jsx";
 import Footer from "../COMPONENTES/footer.jsx";
-import ProductCard from "../COMPONENTES/tarjeta.jsx";
 
-// const products = [
-//   {
-//     id: 0,
-//     image: "/path/to/your/image/gg-1.jpg",
-//     title: "Z Flip Foldable Mobile",
-//     price: 120,
-//   },
-//   {
-//     id: 1,
-//     image: "/path/to/your/image/hh-2.jpg",
-//     title: "Air Pods Pro",
-//     price: 60,
-//   },
-//   {
-//     id: 2,
-//     image: "/path/to/your/image/ee-3.jpg",
-//     title: "250D DSLR Camera",
-//     price: 230,
-//   },
-//   {
-//     id: 3,
-//     image: "/path/to/your/image/aa-1.jpg",
-//     title: "Headphones",
-//     price: 100,
-//   },
-//   {
-//     id: 4,
-//     image: "/path/to/your/image/bb-1.jpg",
-//     title: "Audio Microphone",
-//     price: 230,
-//   },
-//   {
-//     id: 5,
-//     image: "/path/to/your/image/cc-1.jpg",
-//     title: "Smart Watch",
-//     price: 100,
-//   },
-// ];
+const products = [
+  {
+    id: 0,
+    image: "/path/to/your/image/gg-1.jpg",
+    title: "Z Flip Foldable Mobile",
+    price: 120,
+  },
+  {
+    id: 1,
+    image: "/path/to/your/image/hh-2.jpg",
+    title: "Air Pods Pro",
+    price: 60,
+  },
+  {
+    id: 2,
+    image: "/path/to/your/image/ee-3.jpg",
+    title: "250D DSLR Camera",
+    price: 230,
+  },
+  {
+    id: 3,
+    image: "/path/to/your/image/aa-1.jpg",
+    title: "Headphones",
+    price: 100,
+  },
+  {
+    id: 4,
+    image: "/path/to/your/image/bb-1.jpg",
+    title: "Audio Microphone",
+    price: 230,
+  },
+  {
+    id: 5,
+    image: "/path/to/your/image/cc-1.jpg",
+    title: "Smart Watch",
+    price: 100,
+  },
+];
 
 const SearchPage = () => {
-  const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const fetchData = async () => {
@@ -72,9 +70,9 @@ const SearchPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  // const filteredProducts = products.filter((product) =>
-  //   product.name.toLowerCase().includes(searchTerm)
-  // );
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm)
+  );
 
   return (
     <div className="App">
@@ -152,6 +150,57 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
+      {/*Seccion 2  Simple Grid*/}
+      <section class="bg-white">
+        <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center">
+            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+              Trusted by eCommerce Businesses
+            </h2>
+
+            <p class="mt-4 text-gray-500 sm:text-xl">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+              dolores laborum labore provident impedit esse recusandae facere
+              libero harum sequi.
+            </p>
+          </div>
+
+          <div class="mt-8 sm:mt-12">
+            <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
+                <dt class="order-last text-lg font-medium text-gray-500">
+                  Total Sales
+                </dt>
+
+                <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                  $4.8m
+                </dd>
+              </div>
+
+              <div class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
+                <dt class="order-last text-lg font-medium text-gray-500">
+                  Official Addons
+                </dt>
+
+                <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                  24
+                </dd>
+              </div>
+
+              <div class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
+                <dt class="order-last text-lg font-medium text-gray-500">
+                  Total Addons
+                </dt>
+
+                <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                  86
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

@@ -17,8 +17,14 @@ function StorePanel() {
         <>
             <Header />
             <div className="flex justify-center items-center p-6">
-                Esto es el panel de administración de la tienda
+                Lorem ipsum dolor sit amet.
             </div>
+
+
+
+
+
+            
         </>
     );
 }
