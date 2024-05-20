@@ -78,7 +78,7 @@ const Header = () => {
         </div>
         {user ? (
           <div className="flex gap-4 items-center">
-            <p>Sesión iniciada</p>
+            <p>{user.email}</p>
             {user.store ? <Link to="/storepanel">Mi tienda</Link> : ""}
             <Link to="/account">Cuenta</Link>
             <button
