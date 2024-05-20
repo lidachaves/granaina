@@ -15,6 +15,8 @@ import RegisterStore from "./routes/registerStore.jsx";
 import StorePage from "./routes/storePage.jsx";
 import StorePanelPage from "./routes/storePanelPage.jsx";
 import SearchPage from "./routes/searchPage.jsx"; // Importa la nueva página de búsqueda
+import EditProduct from "./routes/EditProduct.jsx";
+import Dashboard from "./routes/Dashboard.jsx";
 
 function App() {
   const { user } = useAuthContext();
@@ -41,7 +43,10 @@ function App() {
             element={
               user && user.store ? <StorePanelPage /> : <Navigate to="/login" />
             }
-          />
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="products" element={<EditProduct />} />
+          </Route>
           <Route
             path="/account"
             element={user ? <AccountPage /> : <Navigate to="/login" />}
