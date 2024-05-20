@@ -82,36 +82,36 @@ function StorePanelPage() {
             >
               Dashboard
             </Link>
-            <a
-              href="#"
+            <Link
+              to="./clients"
               className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
             >
               Clientes
-            </a>
+            </Link>
             <Link
               to="./products"
               className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
             >
               Productos
             </Link>
-            <a
-              href="#"
+            <Link
+              to="./orders"
               className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
             >
               Ordenes
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="./payments"
               className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
             >
               Payments
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="./settings"
               className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
             >
               Ajustes
-            </a>
+            </Link>
           </nav>
           <div className="mt-auto">
             <button className="bg-red-500 text-white px-4 py-2 rounded w-full hover:bg-red-600">
