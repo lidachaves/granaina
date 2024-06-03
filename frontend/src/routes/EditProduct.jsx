@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import Header from "../COMPONENTES/header.jsx";
-import { useLogin } from "../hooks/useLogin.js";
-import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext.js";
-import { Routes, Route } from "react-router-dom";
 
 function EditProduct() {
   const [productsInfo, setProductsInfo] = useState(null);
