@@ -1,4 +1,19 @@
+import React, { useState } from 'react';
+
 function Dashboard() {
+  // Datos de ejemplo
+  const recentUsers = [
+    { id: 1, name: 'Escaloneta', email: 'DS10@example.com', role: 'Admin' },
+    { id: 2, name: 'Jane Smith', email: 'DS10@example.com', role: 'User' },
+    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+  ];
+
+  const recentOrders = [
+    { id: '12345', customer: 'KEVIN', amount: '$100', status: 'Pending' },
+    { id: '12346', customer: 'Rafaelo', amount: '$150', status: 'Completed' },
+    { id: '12347', customer: 'Rafaelo', amount: '$200', status: 'Processing' },
+  ];
+
   return (
     <>
       <div className="flex-1 p-6">
@@ -36,35 +51,35 @@ function Dashboard() {
             <p className="text-gray-700">789</p>
           </div>
         </div>
+
         <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
           <h2 className="text-2xl font-bold mb-4">Recent Users</h2>
           <table className="min-w-full bg-white">
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="w-1/3 px-4 py-2">Name</th>
-                <th className="w-1/3 px-4 py-2">Email</th>
-                <th className="w-1/3 px-4 py-2">Role</th>
+                <th className="w-1/4 px-4 py-2">Name</th>
+                <th className="w-1/4 px-4 py-2">Email</th>
+                <th className="w-1/4 px-4 py-2">Role</th>
+                <th className="w-1/4 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              <tr>
-                <td className="border px-4 py-2">Escaloneta</td>
-                <td className="border px-4 py-2">DS10@example.com</td>
-                <td className="border px-4 py-2">Admin</td>
-              </tr>
-              <tr className="bg-gray-100">
-                <td className="border px-4 py-2">Jane Smith</td>
-                <td className="border px-4 py-2">DS10@example.com</td>
-                <td className="border px-4 py-2">User</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Escaloneta</td>
-                <td className="border px-4 py-2">bob@example.com</td>
-                <td className="border px-4 py-2">User</td>
-              </tr>
+              {recentUsers.map((user) => (
+                <tr key={user.id}>
+                  <td className="border px-4 py-2">{user.name}</td>
+                  <td className="border px-4 py-2">{user.email}</td>
+                  <td className="border px-4 py-2">{user.role}</td>
+                  <td className="border px-4 py-2 text-right">
+                    <button className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
+
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
           <table className="min-w-full bg-white">
@@ -74,27 +89,23 @@ function Dashboard() {
                 <th className="w-1/4 px-4 py-2">Customer</th>
                 <th className="w-1/4 px-4 py-2">Amount</th>
                 <th className="w-1/4 px-4 py-2">Status</th>
+                <th className="w-1/4 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              <tr>
-                <td className="border px-4 py-2">12345</td>
-                <td className="border px-4 py-2">KEVIN</td>
-                <td className="border px-4 py-2">$100</td>
-                <td className="border px-4 py-2">Pending</td>
-              </tr>
-              <tr className="bg-gray-100">
-                <td className="border px-4 py-2">12346</td>
-                <td className="border px-4 py-2">Rafaelo</td>
-                <td className="border px-4 py-2">$150</td>
-                <td className="border px-4 py-2">Completed</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">12347</td>
-                <td className="border px-4 py-2">Rafaelo</td>
-                <td className="border px-4 py-2">$200</td>
-                <td className="border px-4 py-2">Processing</td>
-              </tr>
+              {recentOrders.map((order) => (
+                <tr key={order.id}>
+                  <td className="border px-4 py-2">{order.id}</td>
+                  <td className="border px-4 py-2">{order.customer}</td>
+                  <td className="border px-4 py-2">{order.amount}</td>
+                  <td className="border px-4 py-2">{order.status}</td>
+                  <td className="border px-4 py-2 text-right">
+                    <button className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
