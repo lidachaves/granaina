@@ -117,6 +117,7 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
+      
    {/*Paginacion previsoria. Falta agregregar funcionalidad*/}
       <nav aria-label="Page navigation example" class="flex justify-center">
     <ul class="flex items-center -space-x-px h-8 text-sm">

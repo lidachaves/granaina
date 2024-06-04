@@ -11,6 +11,7 @@ import ProductCardLoading from '../COMPONENTES/productCardLoading.jsx';
 import Footer from '../COMPONENTES/footer.jsx';
 import PurchaseTimeline from '../COMPONENTES/process.jsx';
 import Morecards from '../COMPONENTES/morecards.jsx';   
+import OtherCards from '../COMPONENTES/othercards.jsx';
 
 
 
@@ -70,6 +71,7 @@ function Root() {
                 <CardCarousel />
                 <Section />
                <PurchaseTimeline />
+               <OtherCards/>
                 <Footer />
             </div>
         </div>

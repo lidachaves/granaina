@@ -12,7 +12,7 @@ const PurchaseTimeline = () => {
 
     return (
         <div className="max-w-4xl mx-auto py-6 px-4 text-center">
-            <h2 className="text-2xl font-bold mb-4">Tu compra en simples pasos</h2>
+            <h2 className="text-2xl font-bold mb-4">Tu proceso de compra.</h2>
             <div className="relative">
                 {/* Steps */}
                 {steps.map((step, index) => (
