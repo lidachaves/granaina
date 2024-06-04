@@ -12,7 +12,7 @@ function SlideOver({ isOpen, onClose }) {
                 <button type="button" className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white" onClick={onClose}>
                   <span className="absolute -inset-2.5"></span>
                   <span className="sr-only">Close panel</span>
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -22,7 +22,53 @@ function SlideOver({ isOpen, onClose }) {
                   <h2 className="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Detalle del Producto</h2>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                  {/* Tu contenido */}
+                  {/* Contenido del detalle del producto */}
+                  <div className="space-y-6">
+                    <img src="URL_DE_LA_IMAGEN_DEL_PRODUCTO" alt="Nombre del producto" className="w-full h-auto object-cover" />
+                    
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900">Nombre del Producto</h3>
+                      <p className="mt-2 text-xl text-gray-900">$99.99</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-sm text-gray-900 font-bold">Las opciones seran modificadas segun especificaciones del cliente.</h4>
+                      <p className="mt-2 text-sm text-gray-600">Descripción del producto aquí...</p>
+                    </div>
+
+                    <div>
+                      <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Cantidad</label>
+                      <input type="number" id="quantity" name="quantity" min="1" defaultValue="1" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" />
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-900">Opciones</h4>
+                      <div className="mt-2 space-y-2">
+                        <div>
+                          <label htmlFor="size" className="block text-sm font-medium text-gray-700">Tamaño</label>
+                          <select id="size" name="size" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                            <option>Seleccione una opción</option>
+                            <option>Pequeño</option>
+                            <option>Mediano</option>
+                            <option>Grande</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label htmlFor="color" className="block text-sm font-medium text-gray-700">Color</label>
+                          <select id="color" name="color" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                            <option>Seleccione una opción</option>
+                            <option>Rojo</option>
+                            <option>Azul</option>
+                            <option>Verde</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="button" className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                      Añadir al Carrito
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
