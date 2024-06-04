@@ -19,26 +19,33 @@ function SlideOver({ isOpen, onClose }) {
               </div>
               <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                 <div className="px-4 sm:px-6">
-                  <h2 className="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Detalle del Producto</h2>
+                  <h2 className="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Nombre del Producto</h2>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
                   {/* Contenido del detalle del producto */}
                   <div className="space-y-6">
-                    <img src="URL_DE_LA_IMAGEN_DEL_PRODUCTO" alt="Nombre del producto" className="w-full h-auto object-cover" />
+                  {/* Detalle del producto */}
                     
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">Nombre del Producto</h3>
+                      <h3 className="text-lg font-bold text-gray-900">Precio</h3>
                       <p className="mt-2 text-xl text-gray-900">$99.99</p>
                     </div>
                     
                     <div>
-                      <h4 className="text-sm text-gray-900 font-bold">Las opciones seran modificadas segun especificaciones del cliente.</h4>
+                      <h4 className="text-sm text-gray-900 font-bold">Las opciones serán modificadas según especificaciones del cliente.</h4>
                       <p className="mt-2 text-sm text-gray-600">Descripción del producto aquí...</p>
                     </div>
 
                     <div>
                       <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Cantidad</label>
-                      <input type="number" id="quantity" name="quantity" min="1" defaultValue="1" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" />
+                      <input 
+                        type="number" 
+                        id="quantity" 
+                        name="quantity" 
+                        min="1" 
+                        defaultValue="1" 
+                        className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
+                      />
                     </div>
 
                     <div>
@@ -46,7 +53,11 @@ function SlideOver({ isOpen, onClose }) {
                       <div className="mt-2 space-y-2">
                         <div>
                           <label htmlFor="size" className="block text-sm font-medium text-gray-700">Tamaño</label>
-                          <select id="size" name="size" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                          <select 
+                            id="size" 
+                            name="size" 
+                            className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          >
                             <option>Seleccione una opción</option>
                             <option>Pequeño</option>
                             <option>Mediano</option>
@@ -55,7 +66,11 @@ function SlideOver({ isOpen, onClose }) {
                         </div>
                         <div>
                           <label htmlFor="color" className="block text-sm font-medium text-gray-700">Color</label>
-                          <select id="color" name="color" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                          <select 
+                            id="color" 
+                            name="color" 
+                            className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          >
                             <option>Seleccione una opción</option>
                             <option>Rojo</option>
                             <option>Azul</option>
@@ -65,7 +80,10 @@ function SlideOver({ isOpen, onClose }) {
                       </div>
                     </div>
 
-                    <button type="button" className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    <button 
+                      type="button" 
+                      className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
                       Añadir al Carrito
                     </button>
                   </div>
