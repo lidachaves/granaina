@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext.js";
+import { Link } from "react-router-dom";
 
 function EditProduct() {
   const [productsInfo, setProductsInfo] = useState(null);
@@ -100,6 +101,7 @@ function EditProduct() {
                     <td className="border px-4 py-2">{product.name}</td>
                     <td className="border px-4 py-2">{product.description}</td>
                     <td className="border px-4 py-2">{product.price}€</td>
+                    <Link to={product._id}>Edit</Link>
                   </tr>
                 ))}
             </tbody>
