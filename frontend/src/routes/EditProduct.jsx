@@ -101,7 +101,8 @@ function EditProduct() {
                     <td className="border px-4 py-2">{product.name}</td>
                     <td className="border px-4 py-2">{product.description}</td>
                     <td className="border px-4 py-2">{product.price}€</td>
-                    <Link to={product._id}>Edit</Link>
+                    <Link to={product._id}>Editar</Link>
+                    <Link to={product._id + "/delete"}>Borrar</Link>
                   </tr>
                 ))}
             </tbody>

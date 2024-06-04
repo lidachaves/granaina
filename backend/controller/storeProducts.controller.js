@@ -91,8 +91,9 @@ async function destroy(req, res) {
   try {
     const { product } = req.params;
     const user = req.user;
+    const productInfo = await Product.findOne({ _id: product });
     if (user.id == productInfo.sellerId) {
-      const result = await Product.deleteOne({ URLName: product });
+      const result = await Product.deleteOne({ _id: product });
       res.send(result);
     } else {
       res.status(400).json({ error: "This product isn't yours" });
