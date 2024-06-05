@@ -24,8 +24,7 @@ function SlideOver({ isOpen, onClose }) {
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
                   {/* Contenido del detalle del producto */}
                   <div className="space-y-6">
-                  {/* Detalle del producto */}
-                    
+                    {/* Detalle del producto */}
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">Precio</h3>
                       <p className="mt-2 text-xl text-gray-900">$99.99</p>
@@ -49,35 +48,18 @@ function SlideOver({ isOpen, onClose }) {
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-medium text-gray-900">Opciones</h4>
-                      <div className="mt-2 space-y-2">
-                        <div>
-                          <label htmlFor="size" className="block text-sm font-medium text-gray-700">Tamaño</label>
-                          <select 
-                            id="size" 
-                            name="size" 
-                            className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                          >
-                            <option>Seleccione una opción</option>
-                            <option>Pequeño</option>
-                            <option>Mediano</option>
-                            <option>Grande</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label htmlFor="color" className="block text-sm font-medium text-gray-700">Color</label>
-                          <select 
-                            id="color" 
-                            name="color" 
-                            className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                          >
-                            <option>Seleccione una opción</option>
-                            <option>Rojo</option>
-                            <option>Azul</option>
-                            <option>Verde</option>
-                          </select>
-                        </div>
-                      </div>
+                      <label htmlFor="payment-method" className="block text-sm font-medium text-gray-700">Métodos de Pago</label>
+                      <select 
+                        id="payment-method" 
+                        name="payment-method" 
+                        className="mt-1 block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      >
+                        <option>Seleccione un método de pago</option>
+                        <option>Visa</option>
+                        <option>MasterCard</option>
+                        <option>PayPal</option>
+                        <option>American Express</option>
+                      </select>
                     </div>
 
                     <button 
