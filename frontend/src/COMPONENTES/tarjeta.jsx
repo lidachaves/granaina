@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
+import DetailsProduct from "../routes/detailsproduct.jsx"; 
 
 const ProductCard = ({ productInfo }) => {
   const { cart, addToCart, removeOneItemFromCart, removeFromCart } = useCart();
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const cartProduct = cart.find((product) => {
-    return product._id == productInfo._id;
+    return product._id === productInfo._id;
   });
 
   const handleAddToCart = () => {
@@ -19,6 +21,14 @@ const ProductCard = ({ productInfo }) => {
 
   const handleRemoveFromCart = () => {
     removeFromCart(productInfo);
+  };
+
+  const handleOpenDetails = () => {
+    setIsDetailsOpen(true);
+  };
+
+  const handleCloseDetails = () => {
+    setIsDetailsOpen(false);
   };
 
   return (
@@ -36,14 +46,12 @@ const ProductCard = ({ productInfo }) => {
       )}
       <div className="flex flex-col gap-2 p-2">
         <h2 className="text-lg font-semibold">{productInfo.name}</h2>
-        {/* <p className="text-gray-600">{productInfo.content}</p> */}
-        {/* <p className="text-sm text-gray-500 mt-2">{productInfo.description}</p> */}
-        <Link
+        <button
           className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center"
-          to={"/product/" + productInfo.URLName}
+          onClick={handleOpenDetails}
         >
           Ver detalle
-        </Link>
+        </button>
         {cartProduct ? (
           <>
             <div className="flex gap-4 items-center">
@@ -68,6 +76,7 @@ const ProductCard = ({ productInfo }) => {
           <button onClick={handleAddToCart}>Añadir</button>
         )}
       </div>
+      <DetailsProduct isOpen={isDetailsOpen} onClose={handleCloseDetails} />
     </div>
   );
 };
