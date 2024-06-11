@@ -26,8 +26,16 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(email, password, name, username);
+    await signup(email, password, username, name);
   };
+
+  const canSendForm =
+    isLoading ||
+    passwordScore < minPasswordScore ||
+    username == "" ||
+    name == "" ||
+    email == "";
+
   return (
     <div className="App">
       {/* bg-red-400 bg-blue-400 bg-green-600 bg-yellow-500 */}
@@ -46,6 +54,7 @@ function Register() {
               defaultValue={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+            {error && error.username ? <div>{error.username}</div> : ""}
             <label htmlFor="name">Nombre</label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -64,6 +73,8 @@ function Register() {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {error && error.email ? <div>{error.email}</div> : ""}
+
             <label htmlFor="password">Contraseña</label>
             <div className="relative">
               <input
@@ -90,12 +101,12 @@ function Register() {
             </Link>
             <button
               className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-blue-500/40"
-              disabled={isLoading || passwordScore < minPasswordScore}
+              disabled={canSendForm}
             >
               Crear una cuenta
             </button>
           </form>
-          {error ? error : ""}
+          {error && error.message ? error.message : ""}
         </div>
       </div>
     </div>
