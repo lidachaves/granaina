@@ -23,6 +23,7 @@ import Orders from "./routes/Orders.jsx";
 import StoreSettings from "./routes/StoreSettings.jsx";
 import EditProductInfo from "./routes/EditProductInfo.jsx";
 import DeleteProduct from "./routes/DeleteProduct.jsx";
+import CartPage from "./routes/cart.jsx";
 
 function App() {
   const { user } = useAuthContext();
@@ -69,6 +70,7 @@ function App() {
           <Route path="/product/:URLName" element={<ProductPage />} />
           <Route path="/store/:URLName" element={<StorePage />} />
           <Route path="/search" element={<SearchPage />} />{" "}
+          <Route path="/cart" element={<CartPage />} />
           {/* Agrega la nueva ruta de búsqueda */}
         </Routes>
       </BrowserRouter>

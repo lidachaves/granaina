@@ -76,37 +76,41 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        {user ? (
-          <div className="flex gap-4 items-center">
-            <p>{user.email}</p>
-            {user.store ? (
-              <Link to="/storepanel">Mi tienda</Link>
-            ) : (
-              <Link to="/account">Cuenta</Link>
-            )}
-            <button
-              onClick={handleLogout}
-              className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400"
-            >
-              Cerrar sesión
-            </button>
-          </div>
-        ) : (
-          <div className="flex items-center space-x-5">
-            {/* Icono de usuario */}
-            <Link to="/login">
-              <FontAwesomeIcon
-                icon={faUser}
-                className="text-lg cursor-pointer hover:text-gray-300"
-              />
-            </Link>
-            {/* Icono de carrito */}
+        <div className="flex items-center space-x-5">
+          {user ? (
+            <div className="flex gap-4 items-center">
+              <p>{user.email}</p>
+              {user.store ? (
+                <Link to="/storepanel">Mi tienda</Link>
+              ) : (
+                <Link to="/account">Cuenta</Link>
+              )}
+              <button
+                onClick={handleLogout}
+                className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400"
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Icono de usuario */}
+              <Link to="/login">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="text-lg cursor-pointer hover:text-gray-300"
+                />
+              </Link>
+            </>
+          )}
+          {/* Icono de carrito */}
+          <Link to="/cart">
             <FontAwesomeIcon
               icon={faShoppingCart}
               className="text-lg cursor-pointer hover:text-gray-300"
             />
-          </div>
-        )}
+          </Link>
+        </div>
       </div>
     </header>
   );
