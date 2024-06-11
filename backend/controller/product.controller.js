@@ -25,6 +25,23 @@ async function get(req, res) {
       ...productInfo._doc,
       sellerInfo: { name: sellerInfo.name, username: sellerInfo.username },
     };
+    if (productInfo.sellerId) {
+      const sellerInfo = await User.findOne({
+        _id: productInfo.sellerId,
+      });
+      console.log(productInfo);
+      if (sellerInfo) {
+        productInfo = {
+          ...productInfo._doc,
+          sellerInfo: { name: sellerInfo.name, username: sellerInfo.username },
+        };
+      } else {
+        throw new Error("Error");
+      }
+    } else {
+      res.status(400).json(productInfo);
+    }
+    console.log(productInfo);
     res.status(200).json(productInfo);
   } catch (e) {
     console.log(e);

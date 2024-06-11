@@ -33,12 +33,14 @@ const storeProducts = require("./routes/storeProducts");
 const storeAccount = require("./routes/storeAccount");
 const user = require("./routes/user");
 const search = require("./routes/search");
+const payment = require("./routes/payment");
 
 app.use("/api/products/", product);
 app.use("/api/storepanel/products/", storeProducts);
 app.use("/api/storepanel/account/", storeAccount);
 app.use("/api/users/", user);
 app.use("/api/search", search);
+app.use("/api/payment", payment);
 
 // Custom 404 message
 app.use((req, res, next) => {
