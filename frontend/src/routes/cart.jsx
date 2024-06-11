@@ -20,7 +20,7 @@ function CartPage() {
                 <h2 className="text-2xl font-bold">{product.name}</h2>
               </Link>
             ))}
-            <Link to="processPayment">Comprar</Link>
+            <Link to="/processPayment">Comprar</Link>
           </>
         ) : (
           "No hay productos en el carrito de la compra"
