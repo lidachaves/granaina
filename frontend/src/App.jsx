@@ -22,6 +22,7 @@ import Clients from "./routes/Clients.jsx";
 import Orders from "./routes/Orders.jsx";
 import StoreSettings from "./routes/StoreSettings.jsx";
 import EditProductInfo from "./routes/EditProductInfo.jsx";
+import DeleteProduct from "./routes/DeleteProduct.jsx";
 
 function App() {
   const { user } = useAuthContext();
@@ -54,6 +55,7 @@ function App() {
             <Route path="products">
               <Route index element={<EditProduct />} />
               <Route path=":id" element={<EditProductInfo />} />
+              <Route path=":id/delete" element={<DeleteProduct />} />
             </Route>
             <Route path="orders" element={<Orders />} />
             <Route path="payments" element={<StorePayments />} />

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext.js";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function EditProductInfo() {
-  const [productInfo, setProductInfo] = useState(null);
+  const { id } = useParams();
+
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState(0);
@@ -22,9 +23,9 @@ function EditProductInfo() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/storepanel/products/",
+        "http://localhost:5000/api/storepanel/products/" + id,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
@@ -39,7 +40,7 @@ function EditProductInfo() {
       );
       const json = await response.json();
       if (response.ok) {
-        console.log("Product added");
+        console.log("Product edited");
       }
     } catch (error) {
       console.log(error);
@@ -50,14 +51,18 @@ function EditProductInfo() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/storepanel/products",
+          "http://localhost:5000/api/storepanel/products/" + id,
           {
             headers: { Authorization: `Bearer ${user.token}` },
           }
         );
         const json = await response.json();
         if (response.ok) {
-          setProductsInfo(json);
+          console.log(json);
+          setProductName(json.name);
+          setProductURLName(json.URLName);
+          setProductDescription(json.description);
+          setProductPrice(json.price);
         }
       } catch (error) {
         console.log(error);
@@ -105,7 +110,7 @@ function EditProductInfo() {
             type="submit"
             className="grid-flow-row bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-2"
           >
-            Crear
+            Guardar
           </button>
         </form>
       </div>

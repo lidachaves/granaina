@@ -30,11 +30,13 @@ mongoose
 
 const product = require("./routes/product");
 const storeProducts = require("./routes/storeProducts");
+const storeAccount = require("./routes/storeAccount");
 const user = require("./routes/user");
 const search = require("./routes/search");
 
 app.use("/api/products/", product);
 app.use("/api/storepanel/products/", storeProducts);
+app.use("/api/storepanel/account/", storeAccount);
 app.use("/api/users/", user);
 app.use("/api/search", search);
 

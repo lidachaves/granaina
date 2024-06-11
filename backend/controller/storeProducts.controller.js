@@ -14,7 +14,11 @@ async function getAll(req, res) {
 async function get(req, res) {
   try {
     const { product } = req.params;
-    let productInfo = await Product.findOne({ URLName: product });
+    let productInfo = await Product.findOne({ _id: product });
+    if (!productInfo) {
+      res.status(404).json({ error: "Product not found" });
+      return;
+    }
     const sellerInfo = await User.findOne({
       _id: productInfo.sellerId,
     });
@@ -61,7 +65,7 @@ async function patch(req, res) {
     const { product } = req.params;
     const user = req.user;
     const { URLName, name, description, price } = req.body;
-    const productInfo = await Product.find({ URLName: product });
+    const productInfo = await Product.findOne({ _id: product });
     if (user.id == productInfo.sellerId) {
       const productArray = {
         URLName: URLName,
@@ -69,7 +73,10 @@ async function patch(req, res) {
         description: description,
         price: price,
       };
-      const result = await Product.updateOne(productInfo._id, productArray);
+      const result = await Product.updateOne(
+        { _id: productInfo._id },
+        productArray
+      );
       res.status(200).send(result);
     } else {
       res.status(400).json({ error: "This product isn't yours" });
@@ -84,8 +91,9 @@ async function destroy(req, res) {
   try {
     const { product } = req.params;
     const user = req.user;
+    const productInfo = await Product.findOne({ _id: product });
     if (user.id == productInfo.sellerId) {
-      const result = await Product.deleteOne({ URLName: product });
+      const result = await Product.deleteOne({ _id: product });
       res.send(result);
     } else {
       res.status(400).json({ error: "This product isn't yours" });
