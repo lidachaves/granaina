@@ -43,3 +43,7 @@ La aplicación usa un stack MERN (**M**ongoDB, **E**xpressJS, **R**eact, **N**od
 Acualmente la base de datos se compone de dos tablas:
 - La tabla de productos la cual contiene todos los productos de la tienda.
 - La tabla se usuarios la cual contiene a los clientes y a los compradores.
+## Recursos en linea:
+- Para aprender como funciona MERN: [Net Ninja MERN Stack Crash Course Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iJ_KkrkBZWZRHVwnzLIoUE)
+- Para aprender como funciona react router: [Net Ninja React Router](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iVKmtNuCeIswnQ97in2GGf)
+- Para aprender como funciona JWT: [Fireship Session vs Tokens Authentication in 100 seconds](https://www.youtube.com/watch?v=UBUNrFtufWo), [Net Ninja NodeJS Auth Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp)
