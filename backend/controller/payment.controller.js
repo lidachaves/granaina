@@ -18,6 +18,7 @@ async function purchaseMethod(req, res) {
       product: user.id,
       quantity: 10,
       price: 0,
+      status: 0,
     };
     const result = await Purchase.create(purchaseArray);
     res.send(result);

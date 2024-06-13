@@ -21,6 +21,10 @@ const purchaseSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  status: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);

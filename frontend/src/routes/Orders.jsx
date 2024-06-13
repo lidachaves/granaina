@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext.js";
 import { Link } from "react-router-dom";
+import StatusText from "../COMPONENTES/Status.jsx";
 
 function Orders() {
   // Estado para almacenar la lista de pedidos
@@ -9,6 +10,8 @@ function Orders() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   // Contexto de autenticación
   const { user } = useAuthContext();
+
+  const [filteredOrders, setFilteredOrders] = useState(orders)
 
   // Función para obtener la lista de pedidos
   useEffect(() => {
@@ -32,13 +35,23 @@ function Orders() {
     setSelectedOrder(order);
   };
 
+  const handleChangeFilters = (e) => {
+    const statusText = e.target.value
+    const statusNumber = statusText == 'all' ? null : statusText == 'pending' ? 0 : statusText == 'processing' ? 1 : 2;
+    if(statusNumber !== null){
+      setFilteredOrders(orders.filter((order) => order.status == statusNumber))
+    }else{
+      setFilteredOrders(orders)
+    }
+  }
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-semibold mb-6">Pedidos</h1>
       {/* Filtros para la lista de pedidos */}
       <div className="mb-4">
         <label htmlFor="status" className="block font-medium text-gray-700 mb-1">Estado:</label>
-        <select id="status" name="status" className="border rounded px-4 py-2">
+        <select id="status" name="status" className="border rounded px-4 py-2" onChange={handleChangeFilters}>
           <option value="all">Todos</option>
           <option value="pending">Pendientes</option>
           <option value="completed">Completados</option>
@@ -47,15 +60,14 @@ function Orders() {
       </div>
       {/* Lista de pedidos */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {orders && orders.map((order) => (
-          <div key={order._id} className="bg-white rounded-lg shadow-lg p-6">
+        {filteredOrders && filteredOrders.map((order) => (
+          <div key={order.id} className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-semibold mb-4">Pedido #{order.id}</h2>
-            {order.user}
             <p className="mb-2"><strong>Pago:</strong> {order.price}€</p>
-            {/* <p className="mb-2"><strong>Cliente:</strong> {order.customer}</p>
-            <p className="mb-2"><strong>Total:</strong> ${order.total}</p>
-            <p className="mb-2"><strong>Estado:</strong> {order.status}</p> */}
-            <Link to={order._id} className="text-blue-500 hover:text-blue-700">Ver detalles</Link>
+            <p className="mb-2"><strong>Cliente:</strong> {order.customer.name}</p>
+            <p className="mb-2"><strong>Total:</strong> {order.total}€</p>
+            <p className="mb-2"><strong>Estado:</strong><StatusText status={order.status}/></p>
+            <Link to={order.id} className="text-blue-500 hover:text-blue-700">Ver detalles</Link>
           </div>
         ))}
       </div>
