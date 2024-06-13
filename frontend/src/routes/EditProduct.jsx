@@ -151,8 +151,10 @@ function EditProduct() {
                     <td className="border px-4 py-2">{product.name}</td>
                     <td className="border px-4 py-2">{product.description}</td>
                     <td className="border px-4 py-2">{product.price}€</td>
-                    <Link to={product._id}>Editar</Link>
-                    <Link to={product._id + "/delete"}>Borrar</Link>
+                    <td>
+                      <Link to={product._id}>Editar</Link>
+                      <Link to={product._id + "/delete"}>Borrar</Link>
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -231,9 +233,25 @@ function EditProduct() {
             </thead>
             <tbody className="text-gray-700">
               {[
-                { id: 1, name: "Escaloneta", email: "DS10@example.com", role: "Admin" },
-                { id: 2, name: "Jane Smith", email: "DS10@example.com", role: "User", isHighlighted: true },
-                { id: 3, name: "Escaloneta", email: "bob@example.com", role: "User" },
+                {
+                  id: 1,
+                  name: "Escaloneta",
+                  email: "DS10@example.com",
+                  role: "Admin",
+                },
+                {
+                  id: 2,
+                  name: "Jane Smith",
+                  email: "DS10@example.com",
+                  role: "User",
+                  isHighlighted: true,
+                },
+                {
+                  id: 3,
+                  name: "Escaloneta",
+                  email: "bob@example.com",
+                  role: "User",
+                },
               ].map((user) => renderTableRow(user))}
             </tbody>
           </table>
@@ -253,9 +271,25 @@ function EditProduct() {
             </thead>
             <tbody className="text-gray-700">
               {[
-                { id: 12345, customer: "KEVIN", amount: "$100", status: "Pending" },
-                { id: 12346, customer: "Rafaelo", amount: "$150", status: "Completed", isHighlighted: true },
-                { id: 12347, customer: "Rafaelo", amount: "$200", status: "Processing" },
+                {
+                  id: 12345,
+                  customer: "KEVIN",
+                  amount: "$100",
+                  status: "Pending",
+                },
+                {
+                  id: 12346,
+                  customer: "Rafaelo",
+                  amount: "$150",
+                  status: "Completed",
+                  isHighlighted: true,
+                },
+                {
+                  id: 12347,
+                  customer: "Rafaelo",
+                  amount: "$200",
+                  status: "Processing",
+                },
               ].map((order) => renderTableRow(order))}
             </tbody>
           </table>
