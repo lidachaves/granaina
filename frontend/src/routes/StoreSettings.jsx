@@ -97,7 +97,7 @@ function StoreSettings() {
               type="text"
               id="name"
               name="name"
-              value={name}
+              defaultValue={name}
               onChange={(e) => setName(e.target.value)}
               className="border rounded px-4 py-2 w-full"
             />
@@ -112,7 +112,7 @@ function StoreSettings() {
             <textarea
               id="description"
               name="description"
-              value={description}
+              defaultValue={description}
               onChange={(e) => setDescription(e.target.value)}
               className="border rounded px-4 py-2 w-full"
             />
@@ -128,7 +128,7 @@ function StoreSettings() {
               type="text"
               id="address"
               name="address"
-              value={address}
+              defaultValue={address}
               onChange={(e) => setAddress(e.target.value)}
               className="border rounded px-4 py-2 w-full"
             />
@@ -144,7 +144,7 @@ function StoreSettings() {
               type="email"
               id="email"
               name="email"
-              value={email}
+              defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
               className="border rounded px-4 py-2 w-full"
             />
@@ -160,7 +160,7 @@ function StoreSettings() {
               type="number"
               id="phone"
               name="phone"
-              value={phoneNumber}
+              defaultValue={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="border rounded px-4 py-2 w-full"
             />

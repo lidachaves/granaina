@@ -70,19 +70,19 @@ function Dashboard() {
                   <td className="border px-4 py-2">{user.email}</td>
                   <td className="border px-4 py-2">{user.role}</td>
                   <td className="border px-4 py-2 text-right">
-                  <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
+                  <span className="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
  {/* BOTONES PARA EDITAR Y BORRAR*/}
   <button
-    class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
+    className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
     title="Edit Product"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class="h-4 w-4"
+      className="h-4 w-4"
     >
       <path
         strokeLinecap="round"
@@ -93,16 +93,16 @@ function Dashboard() {
   </button>
 
   <button
-    class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
+    className="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
     title="Delete Product"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class="h-4 w-4"
+      className="h-4 w-4"
     >
       <path
         strokeLinecap="round"
