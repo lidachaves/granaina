@@ -76,18 +76,18 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 text-nowrap">
           {user ? (
             <div className="flex gap-4 items-center">
               <p>{user.email}</p>
               {user.store ? (
-                <Link to="/storepanel">Mi tienda</Link>
+                <Link to="/storepanel" className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600">Mi tienda</Link>
               ) : (
-                <Link to="/account">Cuenta</Link>
+                <Link to="/account" className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600">Cuenta</Link>
               )}
               <button
                 onClick={handleLogout}
-                className="py-2 px-3 rounded-sm bg-red-600 hover:bg-red-500 active:bg-red-400"
+                className="bg-red-500 text-white px-4 py-2 rounded w-full hover:bg-red-600"
               >
                 Cerrar sesión
               </button>
