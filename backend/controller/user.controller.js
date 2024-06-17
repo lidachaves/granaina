@@ -136,14 +136,14 @@ async function signup(req, res) {
 
 async function changePassword(req, res) {
   try {
-    const {password, newPassword} = req.body
-    const user = req.user
-    const userInfo = await User.findOne({_id: user.id})
-    if(!userInfo){
+    const { password, newPassword } = req.body;
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
       res.status(400).json({ error: "The user does not exist" });
       return;
     }
-    if(!password || !newPassword){
+    if (!password || !newPassword) {
       res.status(400).json({ error: "Missing parameters" });
       return;
     }
@@ -160,8 +160,16 @@ async function changePassword(req, res) {
     const salt = bcryptjs.genSaltSync(10);
     const passwordHash = await bcryptjs.hash(newPassword, salt);
 
-    const result = await User.updateOne({_id:user.id}, {password:passwordHash})
-    res.status(200).json(result)
+    const result = await User.updateOne(
+      { _id: user.id },
+      { password: passwordHash }
+    );
+    res.status(200).json(result);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
 
   } catch (e) {
     console.log(e);
@@ -195,4 +203,12 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, login, signup, changePassword, patch, destroy };
+module.exports = {
+  get,
+  login,
+  signup,
+  changePassword,
+  addToCart,
+  patch,
+  destroy,
+};
