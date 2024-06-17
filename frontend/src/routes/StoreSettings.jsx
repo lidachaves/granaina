@@ -31,6 +31,11 @@ function StoreSettings() {
   const [address, setAddress] = useState(user.name);
   const [email, setEmail] = useState(user.name);
   const [phoneNumber, setPhoneNumber] = useState(user.name);
+  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [passwordFormIsLoading, setPasswordFormIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +80,34 @@ function StoreSettings() {
         }),
       }
     );
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if (newPassword == repeatPassword) {
+      setPasswordFormIsLoading(true)
+        const response = await fetch(
+          "http://localhost:5000/api/users/changePassword",
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+            body: JSON.stringify({
+              password: password,
+              newPassword: newPassword,
+            }),
+          }
+        );
+        const JSONResponse = await response.json()
+        if(!response.ok){
+          setError(JSONResponse.error)
+        }
+        setPasswordFormIsLoading(false)
+    }else{
+      setError('Passwords are not the same')
+    }
   };
   return (
     <div className="p-6">
@@ -171,6 +204,74 @@ function StoreSettings() {
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Guardar Cambios
+        </button>
+      </form>
+      <form
+        onSubmit={handleChangePassword}
+        className="bg-white rounded-lg shadow-lg p-6"
+      >
+        <h2 className="text-xl font-semibold mb-4">Cambiar contraseña</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mb-4">
+            <label
+              htmlFor="actualPassword"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Contraseña actual:
+            </label>
+            <input
+              type="password"
+              id="actualPassword"
+              name="actualPassword"
+              defaultValue={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border rounded px-4 py-2 w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="newPassword"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Nueva contraseña:
+            </label>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              defaultValue={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="border rounded px-4 py-2 w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="repeatPassword"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Repetir contraseña:
+            </label>
+            <input
+              type="password"
+              id="repeatPassword"
+              name="repeatPassword"
+              defaultValue={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+              className="border rounded px-4 py-2 w-full"
+            />
+          </div>
+        </div>
+        {error ? (
+          <div className="bg-red-200 rounded p-3 text-red-950 mb-4">{error}</div>
+        ) : (
+          ""
+        )}
+        <button
+          type="submit"
+          disabled={passwordFormIsLoading}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Actualizar contraseña
         </button>
       </form>
       {/* Otras secciones de configuración pueden agregarse aquí */}
