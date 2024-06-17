@@ -46,12 +46,18 @@ const ProductCard = ({ productInfo }) => {
       )}
       <div className="flex flex-col gap-2 p-2">
         <h2 className="text-lg font-semibold">{productInfo.name}</h2>
-        <button
+        {/* <button
           className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center"
           onClick={handleOpenDetails}
         >
           Ver detalle
-        </button>
+        </button> */}
+        <Link
+          className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 transition duration-300 text-center"
+          to={"/product/" + productInfo.URLName}
+        >
+          Ver detalle
+        </Link>
         {cartProduct ? (
           <>
             <div className="flex gap-4 items-center">
