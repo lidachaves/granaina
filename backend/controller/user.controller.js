@@ -171,6 +171,49 @@ async function changePassword(req, res) {
   }
 }
 
+async function getCart(req, res) {
+  try {
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    const cart = userInfo.cart || [];
+    res.status(200).json(cart);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+async function updateCart(req, res) {
+  try {
+    const updatedProduct = req.body;
+    if (!updatedProduct) {
+      res.status(400).json({ error: "Missing parameters" });
+      return;
+    }
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    let cart = userInfo.cart || [];
+    const cartItem = userInfo.cart.find(
+      (product) => product.id == updatedProduct.id
+    );
+    if (!cartItem) {
+      cart.push(updatedProduct);
+    } else {
+      cart = cart.map((product) => {
+        if (product.id == updatedProduct.id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal server error" });
@@ -208,7 +251,8 @@ module.exports = {
   login,
   signup,
   changePassword,
-  addToCart,
+  getCart,
+  updateCart,
   patch,
   destroy,
 };
