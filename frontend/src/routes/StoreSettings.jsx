@@ -34,8 +34,10 @@ function StoreSettings() {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [passwordFormIsLoading, setPasswordFormIsLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [passwordFormIsLoading, setPasswordFormIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const validPassword = newPassword == repeatPassword;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,38 +86,35 @@ function StoreSettings() {
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
-    if (newPassword == repeatPassword) {
-      setPasswordFormIsLoading(true)
-        const response = await fetch(
-          "http://localhost:5000/api/users/changePassword",
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user.token}`,
-            },
-            body: JSON.stringify({
-              password: password,
-              newPassword: newPassword,
-            }),
-          }
-        );
-        const JSONResponse = await response.json()
-        if(!response.ok){
-          setError(JSONResponse.error)
-        }
-        setPasswordFormIsLoading(false)
-    }else{
-      setError('Passwords are not the same')
+    setPasswordFormIsLoading(true);
+    const response = await fetch(
+      "http://localhost:5000/api/users/changePassword",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({
+          password: password,
+          newPassword: newPassword,
+        }),
+      }
+    );
+    const JSONResponse = await response.json();
+    if (!response.ok) {
+      setError(JSONResponse.error);
     }
+    setPasswordFormIsLoading(false);
   };
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-semibold mb-6">Ajustes de la Tienda</h1>
       {/* Formulario para configurar la información de la tienda */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-lg shadow-lg p-6"
+        className="bg-white rounded-lg shadow-lg p-6 mb-6"
       >
         <h2 className="text-xl font-semibold mb-4">Información de la Tienda</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -249,7 +248,10 @@ function StoreSettings() {
               htmlFor="repeatPassword"
               className="block font-medium text-gray-700 mb-1"
             >
-              Repetir contraseña:
+              Repetir contraseña:{" "}
+              {!validPassword && (
+                <span className="text-red-800">(No coincide)</span>
+              )}
             </label>
             <input
               type="password"
@@ -262,14 +264,16 @@ function StoreSettings() {
           </div>
         </div>
         {error ? (
-          <div className="bg-red-200 rounded p-3 text-red-950 mb-4">{error}</div>
+          <div className="bg-red-200 rounded p-3 text-red-950 mb-4">
+            {error}
+          </div>
         ) : (
           ""
         )}
         <button
           type="submit"
-          disabled={passwordFormIsLoading}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          disabled={passwordFormIsLoading || !validPassword}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-500/40"
         >
           Actualizar contraseña
         </button>
