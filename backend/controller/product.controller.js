@@ -14,6 +14,10 @@ async function get(req, res) {
   try {
     const { product } = req.params;
     let productInfo = await Product.findOne({ URLName: product });
+    if(!productInfo){
+      res.status(404).json({error: 'Product not found'})
+      return;
+    }
     const sellerInfo = await User.findOne({
       _id: productInfo.sellerId,
     });
@@ -29,7 +33,6 @@ async function get(req, res) {
       const sellerInfo = await User.findOne({
         _id: productInfo.sellerId,
       });
-      console.log(productInfo);
       if (sellerInfo) {
         productInfo = {
           ...productInfo._doc,
@@ -39,9 +42,8 @@ async function get(req, res) {
         throw new Error("Error");
       }
     } else {
-      res.status(400).json(productInfo);
+      throw new Error('Errorr: the product ' + product.URLName + " does not have a seller")
     }
-    console.log(productInfo);
     res.status(200).json(productInfo);
   } catch (e) {
     console.log(e);
