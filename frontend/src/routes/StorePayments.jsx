@@ -66,6 +66,7 @@ function StorePayments() {
           {/* Aquí puedes mostrar más detalles del pago si es necesario */}
         </div>
       )}
+      
     </div>
   );
 }

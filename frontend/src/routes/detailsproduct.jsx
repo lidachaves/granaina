@@ -1,6 +1,4 @@
-import React from 'react';
-
-function SlideOver({ isOpen, onClose }) {
+function SlideOver({ isOpen, onClose, handleAddToCart }) {
   return (
     <div className={`relative z-10 ${isOpen ? '' : 'hidden'}`} aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
       <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
@@ -62,12 +60,21 @@ function SlideOver({ isOpen, onClose }) {
                       </select>
                     </div>
 
-                    <button 
-                      type="button" 
-                      className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    <a
+                      className="group inline-block w-full rounded-full bg-gradient-to-r from-green-400 via-green-400 to-green-400 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleAddToCart();
+                      }}
                     >
-                      Añadir al Carrito
-                    </button>
+                      <span
+                        className="text-center block rounded-full bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent"
+                      >
+                        Añadir al Carrito
+                      </span>
+                    </a>
+                    
                   </div>
                 </div>
               </div>

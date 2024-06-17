@@ -12,6 +12,8 @@ import Footer from '../COMPONENTES/footer.jsx';
 import PurchaseTimeline from '../COMPONENTES/process.jsx';
 import Morecards from '../COMPONENTES/morecards.jsx';   
 import OtherCards from '../COMPONENTES/othercards.jsx';
+import GoodHero from "../COMPONENTES/hero.jsx";
+import Banner from "../COMPONENTES/setBanner.jsx";
 
 
 
@@ -44,6 +46,10 @@ function Root() {
   return (
     <div className="App">
       <Header />
+      <GoodHero/>
+      <PurchaseTimeline />
+      <Banner/>
+      <OtherCards/>
       {/* <div className="flex justify-center mt-8">
                 <Carousel slides={slides} autoSlide={true} autoSlideInterval={3000} />
             </div> */}
@@ -67,11 +73,9 @@ function Root() {
                         </>
                     )}
                 </div>
-                <Offer />
+             
                 <CardCarousel />
                 <Section />
-               <PurchaseTimeline />
-               <OtherCards/>
                 <Footer />
             </div>
         </div>
