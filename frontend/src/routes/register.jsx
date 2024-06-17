@@ -18,7 +18,7 @@ function Register() {
     "red-400",
     "yellow-500",
     "yellow-500",
-    "blue-400",
+    "green-600",
   ];
   const passwordScoreColor = passwordScoreColorArray[passwordScore];
   const minPasswordScore = 2;
