@@ -11,7 +11,9 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordScore, setPasswordScore] = useState(0);
+  const samePassword = password == repeatPassword;
   const { signup, error, isLoading } = useSignup("");
   const passwordScoreColorArray = [
     "red-400",
@@ -34,7 +36,8 @@ function Register() {
     passwordScore < minPasswordScore ||
     username == "" ||
     name == "" ||
-    email == "";
+    email == "" ||
+    !samePassword;
 
   return (
     <div className="App">
@@ -95,6 +98,22 @@ function Register() {
                 ></span>
               </div>
             </div>
+            <label htmlFor="email">
+              Repetir contraseña{" "}
+              {!samePassword && (
+                <span className="text-red-800">
+                  (No coinciden)
+                </span>
+              )}
+            </label>
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="password"
+              placeholder="Repetir contraseña"
+              name="repeatPassword"
+              defaultValue={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+            />
             {/* <Link to="/forgotpassword" className="text-blue-500 text-sm">¿Olvidaste tu contraseña?</Link> */}
             <Link to="/login" className="text-blue-500 text-sm">
               Iniciar sesión
