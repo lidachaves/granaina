@@ -139,7 +139,6 @@ async function changePassword(req, res) {
     const {password, newPassword} = req.body
     const user = req.user
     const userInfo = await User.findOne({_id: user.id})
-    console.log(userInfo)
     if(!userInfo){
       res.status(400).json({ error: "The user does not exist" });
       return;
@@ -148,7 +147,6 @@ async function changePassword(req, res) {
       res.status(400).json({ error: "Missing parameters" });
       return;
     }
-    console.log(req.body)
     const correctPassword = await bcryptjs.compare(password, userInfo.password);
     if (!correctPassword) {
       res.status(400).json({ error: "Incorrect password" });
