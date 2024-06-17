@@ -86,6 +86,7 @@ function StoreSettings() {
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
+    setError(null)
     setPasswordFormIsLoading(true);
     const response = await fetch(
       "http://localhost:5000/api/users/changePassword",
