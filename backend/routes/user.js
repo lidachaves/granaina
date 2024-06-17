@@ -12,6 +12,8 @@ router.post("/signup", userController.signup);
 
 router.post("/login", userController.login);
 
+router.patch("/changePassword", [ensureAuth], userController.changePassword);
+
 router.patch("/", [ensureAuth], userController.patch);
 
 router.delete("/", [ensureAuth], userController.destroy);

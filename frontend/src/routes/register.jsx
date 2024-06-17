@@ -11,14 +11,16 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordScore, setPasswordScore] = useState(0);
+  const samePassword = password == repeatPassword;
   const { signup, error, isLoading } = useSignup("");
   const passwordScoreColorArray = [
     "red-400",
     "red-400",
     "yellow-500",
+    "yellow-500",
     "green-600",
-    "blue-400",
   ];
   const passwordScoreColor = passwordScoreColorArray[passwordScore];
   const minPasswordScore = 2;
@@ -26,8 +28,17 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(email, password, name, username);
+    await signup(email, password, username, name);
   };
+
+  const canSendForm =
+    isLoading ||
+    passwordScore < minPasswordScore ||
+    username == "" ||
+    name == "" ||
+    email == "" ||
+    !samePassword;
+
   return (
     <div className="App">
       {/* bg-red-400 bg-blue-400 bg-green-600 bg-yellow-500 */}
@@ -46,6 +57,7 @@ function Register() {
               defaultValue={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+            {error && error.username ? <div>{error.username}</div> : ""}
             <label htmlFor="name">Nombre</label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -64,6 +76,8 @@ function Register() {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {error && error.email ? <div>{error.email}</div> : ""}
+
             <label htmlFor="password">Contraseña</label>
             <div className="relative">
               <input
@@ -84,18 +98,34 @@ function Register() {
                 ></span>
               </div>
             </div>
+            <label htmlFor="email">
+              Repetir contraseña{" "}
+              {!samePassword && (
+                <span className="text-red-800">
+                  No coinciden
+                </span>
+              )}
+            </label>
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="password"
+              placeholder="Repetir contraseña"
+              name="repeatPassword"
+              defaultValue={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+            />
             {/* <Link to="/forgotpassword" className="text-blue-500 text-sm">¿Olvidaste tu contraseña?</Link> */}
             <Link to="/login" className="text-blue-500 text-sm">
               Iniciar sesión
             </Link>
             <button
               className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-blue-500/40"
-              disabled={isLoading || passwordScore < minPasswordScore}
+              disabled={canSendForm}
             >
               Crear una cuenta
             </button>
           </form>
-          {error ? error : ""}
+          {error && error.message ? error.message : ""}
         </div>
       </div>
     </div>

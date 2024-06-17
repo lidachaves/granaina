@@ -134,6 +134,32 @@ function EditProduct() {
           </div>
         </div>
 
+        <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 className="text-2xl font-bold mb-4">Productos</h2>
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray-800 text-white">
+              <tr>
+                <th className="w-1/3 px-4 py-2">Nombre</th>
+                <th className="w-1/3 px-4 py-2">Descripción</th>
+                <th className="w-1/3 px-4 py-2">Precio</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-700">
+              {productsInfo &&
+                productsInfo.map((product) => (
+                  <tr key={product._id}>
+                    <td className="border px-4 py-2">{product.name}</td>
+                    <td className="border px-4 py-2">{product.description}</td>
+                    <td className="border px-4 py-2">{product.price}€</td>
+                    <td>
+                      <Link to={product._id}>Editar</Link>
+                      <Link to={product._id + "/delete"}>Borrar</Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
         <form
           className="bg-white p-6 rounded-lg shadow-lg mb-6"
           onSubmit={handleCreateProduct}
@@ -207,9 +233,25 @@ function EditProduct() {
             </thead>
             <tbody className="text-gray-700">
               {[
-                { id: 1, name: "Escaloneta", email: "DS10@example.com", role: "Admin" },
-                { id: 2, name: "Jane Smith", email: "DS10@example.com", role: "User", isHighlighted: true },
-                { id: 3, name: "Escaloneta", email: "bob@example.com", role: "User" },
+                {
+                  id: 1,
+                  name: "Escaloneta",
+                  email: "DS10@example.com",
+                  role: "Admin",
+                },
+                {
+                  id: 2,
+                  name: "Jane Smith",
+                  email: "DS10@example.com",
+                  role: "User",
+                  isHighlighted: true,
+                },
+                {
+                  id: 3,
+                  name: "Escaloneta",
+                  email: "bob@example.com",
+                  role: "User",
+                },
               ].map((user) => renderTableRow(user))}
             </tbody>
           </table>
@@ -229,9 +271,25 @@ function EditProduct() {
             </thead>
             <tbody className="text-gray-700">
               {[
-                { id: 12345, customer: "KEVIN", amount: "$100", status: "Pending" },
-                { id: 12346, customer: "Rafaelo", amount: "$150", status: "Completed", isHighlighted: true },
-                { id: 12347, customer: "Rafaelo", amount: "$200", status: "Processing" },
+                {
+                  id: 12345,
+                  customer: "KEVIN",
+                  amount: "$100",
+                  status: "Pending",
+                },
+                {
+                  id: 12346,
+                  customer: "Rafaelo",
+                  amount: "$150",
+                  status: "Completed",
+                  isHighlighted: true,
+                },
+                {
+                  id: 12347,
+                  customer: "Rafaelo",
+                  amount: "$200",
+                  status: "Processing",
+                },
               ].map((order) => renderTableRow(order))}
             </tbody>
           </table>

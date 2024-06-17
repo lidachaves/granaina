@@ -134,6 +134,41 @@ async function signup(req, res) {
   }
 }
 
+async function changePassword(req, res) {
+  try {
+    const {password, newPassword} = req.body
+    const user = req.user
+    const userInfo = await User.findOne({_id: user.id})
+    if(!userInfo){
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    if(!password || !newPassword){
+      res.status(400).json({ error: "Missing parameters" });
+      return;
+    }
+    const correctPassword = await bcryptjs.compare(password, userInfo.password);
+    if (!correctPassword) {
+      res.status(400).json({ error: "Incorrect password" });
+      return;
+    }
+    const passwordScore = zxcvbn(newPassword).score;
+    if (passwordScore < minPasswordScore) {
+      res.status(400).json({ error: "The new password is too weak" });
+      return;
+    }
+    const salt = bcryptjs.genSaltSync(10);
+    const passwordHash = await bcryptjs.hash(newPassword, salt);
+
+    const result = await User.updateOne({_id:user.id}, {password:passwordHash})
+    res.status(200).json(result)
+
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 async function patch(req, res) {
   try {
     const user = req.user;
@@ -160,4 +195,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, login, signup, patch, destroy };
+module.exports = { get, login, signup, changePassword, patch, destroy };
