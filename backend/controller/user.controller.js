@@ -123,10 +123,10 @@ async function signup(req, res) {
     }
 
     const result = await User.create(userArray);
-    res.json({
-      email: result.email,
-      password: result.password,
-      store: store,
+    res.status(200).json({
+      token: jwt.createToken(userArray, "24h"),
+      email: userArray.email,
+      store: userArray.store ? true : false,
     });
   } catch (e) {
     console.log(e);
