@@ -34,10 +34,7 @@ async function get(req, res) {
         _id: productInfo.sellerId,
       });
       if (sellerInfo) {
-        productInfo = {
-          ...productInfo._doc,
-          sellerInfo: { name: sellerInfo.name, username: sellerInfo.username },
-        };
+        productInfo.sellerInfo = { name: sellerInfo.name, username: sellerInfo.username }
       } else {
         throw new Error("Error");
       }
