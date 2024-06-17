@@ -102,7 +102,7 @@ function Register() {
               Repetir contraseña{" "}
               {!samePassword && (
                 <span className="text-red-800">
-                  (No coinciden)
+                  No coinciden
                 </span>
               )}
             </label>

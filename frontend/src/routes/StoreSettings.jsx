@@ -251,7 +251,7 @@ function StoreSettings() {
               Repetir contraseña:{" "}
               {!validPassword && (
                 <span className="text-red-800">
-                  (No coincide) const [password, setPassword] = useState("");
+                  No coinciden
                 </span>
               )}
             </label>
