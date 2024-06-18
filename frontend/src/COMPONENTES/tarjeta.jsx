@@ -69,7 +69,7 @@ const ProductCard = ({ productInfo }) => {
               onClick={handleRemoveFromCart}
             >
               <span className="block rounded-full bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent">
-                Añadir al carrito
+                Eliminarl del carrito
               </span>
             </button>
           </>
@@ -80,7 +80,7 @@ const ProductCard = ({ productInfo }) => {
             onClick={handleAddToCart}
           >
             <span className="block rounded-full bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent">
-            Añadir al carrito
+              Añadir al carrito
             </span>
           </button>
         )}
