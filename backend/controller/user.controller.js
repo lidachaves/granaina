@@ -123,10 +123,10 @@ async function signup(req, res) {
     }
 
     const result = await User.create(userArray);
-    res.json({
-      email: result.email,
-      password: result.password,
-      store: store,
+    res.status(200).json({
+      token: jwt.createToken(userArray, "24h"),
+      email: userArray.email,
+      store: userArray.store ? true : false,
     });
   } catch (e) {
     console.log(e);
@@ -136,14 +136,14 @@ async function signup(req, res) {
 
 async function changePassword(req, res) {
   try {
-    const {password, newPassword} = req.body
-    const user = req.user
-    const userInfo = await User.findOne({_id: user.id})
-    if(!userInfo){
+    const { password, newPassword } = req.body;
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
       res.status(400).json({ error: "The user does not exist" });
       return;
     }
-    if(!password || !newPassword){
+    if (!password || !newPassword) {
       res.status(400).json({ error: "Missing parameters" });
       return;
     }
@@ -160,9 +160,60 @@ async function changePassword(req, res) {
     const salt = bcryptjs.genSaltSync(10);
     const passwordHash = await bcryptjs.hash(newPassword, salt);
 
-    const result = await User.updateOne({_id:user.id}, {password:passwordHash})
-    res.status(200).json(result)
+    const result = await User.updateOne(
+      { _id: user.id },
+      { password: passwordHash }
+    );
+    res.status(200).json(result);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
 
+async function getCart(req, res) {
+  try {
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    const cart = userInfo.cart || [];
+    res.status(200).json(cart);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+async function updateCart(req, res) {
+  try {
+    const updatedProduct = req.body;
+    if (!updatedProduct) {
+      res.status(400).json({ error: "Missing parameters" });
+      return;
+    }
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    let cart = userInfo.cart || [];
+    const cartItem = userInfo.cart.find(
+      (product) => product.id == updatedProduct.id
+    );
+    if (!cartItem) {
+      cart.push(updatedProduct);
+    } else {
+      cart = cart.map((product) => {
+        if (product.id == updatedProduct.id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal server error" });
@@ -195,4 +246,13 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = { get, login, signup, changePassword, patch, destroy };
+module.exports = {
+  get,
+  login,
+  signup,
+  changePassword,
+  getCart,
+  updateCart,
+  patch,
+  destroy,
+};

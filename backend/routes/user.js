@@ -14,6 +14,10 @@ router.post("/login", userController.login);
 
 router.patch("/changePassword", [ensureAuth], userController.changePassword);
 
+router.get("/getCart", [ensureAuth], userController.getCart);
+
+router.patch("/updateCart", [ensureAuth], userController.updateCart);
+
 router.patch("/", [ensureAuth], userController.patch);
 
 router.delete("/", [ensureAuth], userController.destroy);
