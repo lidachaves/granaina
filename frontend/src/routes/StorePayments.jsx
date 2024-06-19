@@ -10,21 +10,21 @@ function StorePayments() {
   const { user } = useAuthContext();
 
   // Función para obtener la lista de pagos
-  useEffect(() => {
-    const fetchPayments = async () => {
-      try {
-        const response = await fetch("API_URL/payments", {
-          headers: { Authorization: `Bearer ${user.token}` },
-        });
-        const data = await response.json();
-        setPayments(data);
-      } catch (error) {
-        console.error("Error fetching payments:", error.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPayments = async () => {
+  //     try {
+  //       const response = await fetch("API_URL/payments", {
+  //         headers: { Authorization: `Bearer ${user.token}` },
+  //       });
+  //       const data = await response.json();
+  //       setPayments(data);
+  //     } catch (error) {
+  //       console.error("Error fetching payments:", error.message);
+  //     }
+  //   };
 
-    fetchPayments();
-  }, [user.token]);
+  //   fetchPayments();
+  // }, [user.token]);
 
   // Función para mostrar los detalles del pago seleccionado
   const showPaymentDetails = (payment) => {
