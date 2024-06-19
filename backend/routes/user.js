@@ -14,6 +14,8 @@ router.post("/login", userController.login);
 
 router.patch("/changePassword", [ensureAuth], userController.changePassword);
 
+router.patch("/changeEmail", [ensureAuth], userController.changeEmail);
+
 router.get("/getCart", [ensureAuth], userController.getCart);
 
 router.patch("/updateCart", [ensureAuth], userController.updateCart);

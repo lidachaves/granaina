@@ -37,6 +37,10 @@ function StoreSettings() {
   const [passwordFormIsLoading, setPasswordFormIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [newEmail, setNewEmail] = useState(null);
+  const [emailFormIsLoading, setEmailFormIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+
   const validPassword = newPassword == repeatPassword;
 
   useEffect(() => {
@@ -86,7 +90,7 @@ function StoreSettings() {
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
-    setError(null)
+    setError(null);
     setPasswordFormIsLoading(true);
     const response = await fetch(
       "http://localhost:5000/api/users/changePassword",
@@ -107,6 +111,30 @@ function StoreSettings() {
       setError(JSONResponse.error);
     }
     setPasswordFormIsLoading(false);
+  };
+
+  const handleChangeEmail = async (e) => {
+    e.preventDefault();
+    setEmailError(null);
+    setEmailFormIsLoading(true);
+    const response = await fetch(
+      "http://localhost:5000/api/users/changeEmail",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({
+          newEmail: newEmail,
+        }),
+      }
+    );
+    const JSONResponse = await response.json();
+    if (!response.ok) {
+      setEmailError(JSONResponse.error);
+    }
+    setEmailFormIsLoading(false);
   };
 
   return (
@@ -208,7 +236,7 @@ function StoreSettings() {
       </form>
       <form
         onSubmit={handleChangePassword}
-        className="bg-white rounded-lg shadow-lg p-6"
+        className="bg-white rounded-lg shadow-lg p-6 mb-6"
       >
         <h2 className="text-xl font-semibold mb-4">Cambiar contraseña</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -251,9 +279,7 @@ function StoreSettings() {
             >
               Repetir contraseña:{" "}
               {!validPassword && (
-                <span className="text-red-800">
-                  No coinciden
-                </span>
+                <span className="text-red-800">No coinciden</span>
               )}
             </label>
             <input
@@ -279,6 +305,44 @@ function StoreSettings() {
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-500/40"
         >
           Actualizar contraseña
+        </button>
+      </form>
+      <form
+        onSubmit={handleChangeEmail}
+        className="bg-white rounded-lg shadow-lg p-6"
+      >
+        <h2 className="text-xl font-semibold mb-4">Cambiar contraseña</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mb-4">
+            <label
+              htmlFor="actualPassword"
+              className="block font-medium text-gray-700 mb-1"
+            >
+              Nuevo correo electrónico:
+            </label>
+            <input
+              type="newEmail"
+              id="newEmail"
+              name="newEmail"
+              defaultValue={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+              className="border rounded px-4 py-2 w-full"
+            />
+          </div>
+        </div>
+        {emailError ? (
+          <div className="bg-red-200 rounded p-3 text-red-950 mb-4">
+            {emailError}
+          </div>
+        ) : (
+          ""
+        )}
+        <button
+          type="submit"
+          disabled={emailFormIsLoading}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-500/40"
+        >
+          Cambiar el correo electrónico
         </button>
       </form>
       {/* Otras secciones de configuración pueden agregarse aquí */}

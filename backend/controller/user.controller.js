@@ -171,6 +171,27 @@ async function changePassword(req, res) {
   }
 }
 
+async function changeEmail(req, res) {
+  try {
+    const { newEmail } = req.body;
+    if (!newEmail) {
+      res.status(400).json({ error: "Missing parameters" });
+      return;
+    }
+    const user = req.user;
+    const userInfo = await User.findOne({ _id: user.id });
+    if (!userInfo) {
+      res.status(400).json({ error: "The user does not exist" });
+      return;
+    }
+    const result = await User.updateOne({ _id: user.id }, { email: newEmail });
+    res.status(200).json(result);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 async function getCart(req, res) {
   try {
     const user = req.user;
@@ -251,6 +272,7 @@ module.exports = {
   login,
   signup,
   changePassword,
+  changeEmail,
   getCart,
   updateCart,
   patch,
