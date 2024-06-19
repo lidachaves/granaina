@@ -19,7 +19,7 @@ function StorePayments() {
         const data = await response.json();
         setPayments(data);
       } catch (error) {
-        console.error("Error fetching payments:", error);
+        console.error("Error fetching payments:", error.message);
       }
     };
 
@@ -36,7 +36,12 @@ function StorePayments() {
       <h1 className="text-3xl font-semibold mb-6">Pagos</h1>
       {/* Filtros para la lista de pagos */}
       <div className="mb-4">
-        <label htmlFor="status" className="block font-medium text-gray-700 mb-1">Estado:</label>
+        <label
+          htmlFor="status"
+          className="block font-medium text-gray-700 mb-1"
+        >
+          Estado:
+        </label>
         <select id="status" name="status" className="border rounded px-4 py-2">
           <option value="all">Todos</option>
           <option value="pending">Pendientes</option>
@@ -49,24 +54,42 @@ function StorePayments() {
         {payments.map((payment) => (
           <div key={payment.id} className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-semibold mb-4">Pago #{payment.id}</h2>
-            <p className="mb-2"><strong>Cliente:</strong> {payment.customer}</p>
-            <p className="mb-2"><strong>Total:</strong> ${payment.total}</p>
-            <p className="mb-2"><strong>Estado:</strong> {payment.status}</p>
-            <button onClick={() => showPaymentDetails(payment)} className="text-blue-500 hover:text-blue-700">Ver detalles</button>
+            <p className="mb-2">
+              <strong>Cliente:</strong> {payment.customer}
+            </p>
+            <p className="mb-2">
+              <strong>Total:</strong> ${payment.total}
+            </p>
+            <p className="mb-2">
+              <strong>Estado:</strong> {payment.status}
+            </p>
+            <button
+              onClick={() => showPaymentDetails(payment)}
+              className="text-blue-500 hover:text-blue-700"
+            >
+              Ver detalles
+            </button>
           </div>
         ))}
       </div>
       {/* Detalles del pago seleccionado */}
       {selectedPayment && (
         <div className="bg-white rounded-lg shadow-lg p-6 mt-6">
-          <h2 className="text-xl font-semibold mb-4">Detalles del Pago #{selectedPayment.id}</h2>
-          <p><strong>Cliente:</strong> {selectedPayment.customer}</p>
-          <p><strong>Total:</strong> ${selectedPayment.total}</p>
-          <p><strong>Estado:</strong> {selectedPayment.status}</p>
+          <h2 className="text-xl font-semibold mb-4">
+            Detalles del Pago #{selectedPayment.id}
+          </h2>
+          <p>
+            <strong>Cliente:</strong> {selectedPayment.customer}
+          </p>
+          <p>
+            <strong>Total:</strong> ${selectedPayment.total}
+          </p>
+          <p>
+            <strong>Estado:</strong> {selectedPayment.status}
+          </p>
           {/* Aquí puedes mostrar más detalles del pago si es necesario */}
         </div>
       )}
-      
     </div>
   );
 }
