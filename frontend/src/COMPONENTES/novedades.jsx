@@ -3,14 +3,14 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 const CardCarousel = () => {
   const cards = [
-    { id: 1, title: 'Tarjeta 1', content: 'Contenido de la tarjeta 1', description: 'Breve descripción 1', imageUrl: '/producto5.jpeg' },
-    { id: 2, title: 'Tarjeta 2', content: 'Contenido de la tarjeta 2', description: 'Breve descripción 2', imageUrl: '/producto6.jpeg' },
-    { id: 3, title: 'Tarjeta 3', content: 'Contenido de la tarjeta 3', description: 'Breve descripción 3', imageUrl: '/producto7.jpeg' },
-    { id: 4, title: 'Tarjeta 4', content: 'Contenido de la tarjeta 4', description: 'Breve descripción 4', imageUrl: '/producto6.jpeg' },
-    { id: 5, title: 'Tarjeta 5', content: 'Contenido de la tarjeta 5', description: 'Breve descripción 5', imageUrl: '/producto5.jpeg' },
-    { id: 6, title: 'Tarjeta 6', content: 'Contenido de la tarjeta 6', description: 'Breve descripción 6', imageUrl: '/producto7.jpeg' },
-    { id: 7, title: 'Tarjeta 7', content: 'Contenido de la tarjeta 7', description: 'Breve descripción 7', imageUrl: '/producto6.jpeg' },
-    { id: 8, title: 'Tarjeta 8', content: 'Contenido de la tarjeta 8', description: 'Breve descripción 8', imageUrl: '/producto5.jpeg' },
+    { id: 1, title: 'Tarjeta 1', content: 'Visita Guiada', description: 'Una experiencia única para conocer los rincones históricos', imageUrl: 'https://sobreespana.com/wp-content/uploads/2009/04/alhambra-de-granada.jpg' },
+    { id: 2, title: 'Tarjeta 2', content: 'Exposición de Arte', description: 'Disfruta de una colección de arte moderno', imageUrl: 'https://youimg1.c-ctrip.com/target/100r1900000166g0l7626_C_300_300.jpg' },
+    { id: 3, title: 'Tarjeta 3', content: 'Concierto al Aire Libre', description: 'Disfruta de la música en vivo', imageUrl: 'https://galekkeropvakantie.nl/wp-content/uploads/2020/04/Alhambra-Nasridische-Paleizen-300x200.jpg' },
+    { id: 4, title: 'Tarjeta 4', content: 'Sesión de Yoga', description: 'Relájate y renueva tu energía', imageUrl: 'https://i.pinimg.com/originals/13/7c/1c/137c1c6e2d99f95621b48e85f0a6b114.jpg' },
+    { id: 5, title: 'Tarjeta 5', content: 'Clases de Fotografía', description: 'Mejora tus habilidades fotográficas', imageUrl: 'https://inostranno.ru/wp-content/uploads/2020/04/Olivium-Outlet-Center.jpg?x47216' },
+    { id: 6, title: 'Tarjeta 6', content: 'Excursión en la Naturaleza', description: 'Una caminata guiada por los mejores paisajes naturales', imageUrl: 'https://eldiario24.es/wp-content/uploads/2017/09/shutterstock_678035068FILEminimizer.jpg' },
+    { id: 7, title: 'Tarjeta 7', content: 'Tour Gastronómico', description: 'Prueba los sabores locales', imageUrl: 'https://i.pinimg.com/originals/55/7b/01/557b01ebdd13e58ad3aee461e7f4abc0.jpg' },
+    { id: 8, title: 'Tarjeta 8', content: 'Taller de Cocina', description: 'Aprende a cocinar platos locales', imageUrl: 'https://static.grupojoly.com/clip/5abcbee0-3943-4200-adea-50a95d740141_16-9-aspect-ratio_default_0.jpg' },
   ];
 
   // Función para barajar el array de tarjetas
