@@ -166,9 +166,13 @@ const SearchPage = () => {
             </h2>
 
             <p className="mt-4 text-gray-500 sm:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              dolores laborum labore provident impedit esse recusandae facere
-              libero harum sequi.
+            Las buenas marcas de e-commerce (comercio electrónico) 
+            implementan al menos una técnica de CRO en las páginas de sus productos. 
+            Utilizan testimonios de clientes, provocan el miedo de los visitantes 
+            a perderse algo (FOMO), hacen recomendaciones de productos, 
+            y así sucesivamente.
+            Excepcionales marcas de e-commerce (comercio electrónico) 
+            combinan estas técnicas y le añaden algo más.
             </p>
           </div>
 
@@ -180,27 +184,27 @@ const SearchPage = () => {
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  $4.8m
+                Customer Insights
                 </dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
                 <dt className="order-last text-lg font-medium text-gray-500">
-                  Official Addons
+                  EMAIL
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  24
+                  SEGMENTACION
                 </dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
                 <dt className="order-last text-lg font-medium text-gray-500">
-                  Total Addons
+                  OnSite
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  86
+                  Glossier
                 </dd>
               </div>
             </dl>

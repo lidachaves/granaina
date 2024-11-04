@@ -5,17 +5,16 @@ export default function Section() {
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Crea tu tienda en simples pasos.
+              Crea tu tienda con unos sencillos pasos y verás que no podras parar.
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-              Tu propia tienda en línea es fácil y rápido. Solo necesitas unos
-              pocos minutos para registrarte, configurar tu tienda y empezar a
-              vender.
+              Ven y descubre como puedes registrarte y empezar a descubrir lo que hay dentro 
+              te aseguro que te encantara y no podras parar.
             </p>
           </div>
           <div>
             <div className="mt-10">
-              {/* Decorative image grid */}
+              {/* Decorative image grid*/ }
               <div
                 aria-hidden="true"
                 className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"

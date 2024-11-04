@@ -8,7 +8,7 @@ const GoodHero = () => {
           All your <span className="block w-full text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 lg:inline">customer feedback</span> in one single place.
         </h1>
         <p className="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
-        Nuestro ecommerce permite a los usuarios votar por productos, ver el roadmap y recibir retroalimentación constante de los clientes
+        La Granaina lo tiene todo
         </p>
         <div className="mb-4 space-x-0 md:space-x-2 md:mb-8">
   <a
@@ -33,7 +33,7 @@ const GoodHero = () => {
     className="inline-flex items-center justify-center w-full mb-2 btn btn-light btn-lg sm:w-auto sm:mb-0 border-2 border-gray-800 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 hover:border-gray-600 px-6 py-3 text-lg"
     href="#"
   >
-    Book a Demo
+    Granaina
     <svg
       className="w-5 h-5 ml-2"
       xmlns="http://www.w3.org/2000/svg"

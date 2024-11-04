@@ -30,7 +30,7 @@ function AboutUs() {
       <Header />
       <div className="relative isolate overflow-hidden bg-white-300 py-24 sm:py-32">
         <img
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
+          src="https://www.obayashivn.com/Data/Sites/1/News/538/aeon_celadon_ext3.jpg"
           alt=""
           className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
         />
@@ -60,13 +60,22 @@ function AboutUs() {
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
+            
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Work with us
+             Place your order
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+            <p className="mt-6 text-lg leading-8 text-white">
+            El Parque Comercial Nevada, ubicado en Armilla, 
+            ofrece una experiencia de compra completa con una gran 
+            variedad de tiendas y productos para el hogar, 
+            construcción y bricolaje. Aunque algunos visitantes han 
+            expresado preocupación por la seguridad, destaca por su 
+            amabilidad del personal y la limpieza. Con amplio espacio 
+            y grandes ventanales, el centro comercial ofrece vistas 
+            panorámicas a la sierra. También cuenta con un estacionamiento 
+            amplio y opciones de restaurantes. A pesar de su tamaño, 
+            algunos visitantes consideran que el diseño del centro comercial 
+            podría ser más innovador. 
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
@@ -97,13 +106,13 @@ function AboutUs() {
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Trusted by eCommerce Businesses
+              Come and discober, that with our newsletter by subscribing you can find the 
+              best items at a great price that you can not miss.
             </h2>
 
             <p className="mt-4 text-gray-500 sm:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              dolores laborum labore provident impedit esse recusandae facere
-              libero harum sequi.
+              Find the best items, that this city can give you, and renovate your home with 
+              the best items that this city has to offer.
             </p>
           </div>
 
@@ -115,33 +124,40 @@ function AboutUs() {
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  $4.8m
+                  Articulos
                 </dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
                 <dt className="order-last text-lg font-medium text-gray-500">
-                  Official Addons
+                  Wall covering 
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  24
+                  Search
                 </dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
                 <dt className="order-last text-lg font-medium text-gray-500">
-                  Total Addons
+                  Aluminum window
                 </dt>
 
                 <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  86
+                 Decoora 
                 </dd>
               </div>
             </dl>
           </div>
         </div>
       </section>
+      <div className="container mx-auto px-4 py-8">
+  <img 
+    src="https://i.pinimg.com/736x/a7/aa/13/a7aa131412c052179a69385ec2fa5eca.jpg" 
+    alt="Descripción de la imagen" 
+    className="mx-auto w-1/2 h-auto rounded-md shadow-lg mt-8" 
+  />
+</div>
       {/* Seccion 2*/}
       <Footer />
     </div>

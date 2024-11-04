@@ -32,27 +32,27 @@ const Header = () => {
     <header className="bg-gray-800 text-white flex py-3 justify-center px-4">
       <div className="max-w-7xl w-full flex justify-between gap-5 items-center h-10">
         <div className="flex gap-5">
-          <h1 className="text-xl font-bold">Logo</h1>
+          <h1 className="text-xl font-bold">CUSTOMERS</h1>
           <nav className="flex items-center space-x-9">
             <ul className="flex gap-5">
               <li>
                 <Link to="/" className="hover:text-gray-300">
-                  Home
+                  ROPA
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="hover:text-gray-300">
-                  About
+                  CALZADO
                 </Link>
               </li>
               <li>
                 <Link to="/search" className="hover:text-gray-300">
-                  Buscador
+                  ROPA HOMBRE
                 </Link>
               </li>
               <li>
                 <Link href="#" className="hover:text-gray-300">
-                  Promotions
+                  NIÑOS 
                 </Link>
               </li>
             </ul>
@@ -62,7 +62,7 @@ const Header = () => {
                 className="hover:text-gray-300"
                 onClick={toggleCategories}
               >
-                Categorias
+                ACCESORIOS
               </a>
               {showCategories && (
                 <ul className="absolute mt-2 bg-gray-800 text-white p-2 rounded-lg shadow-md z-50">
