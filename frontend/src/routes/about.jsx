@@ -166,11 +166,19 @@ function AboutUs() {
         </div>
       </section>
       <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 grid grid-cols-2 gap-4">
   <img 
-    src="https://i.pinimg.com/736x/a7/aa/13/a7aa131412c052179a69385ec2fa5eca.jpg" 
-    alt="Descripción de la imagen" 
-    className="mx-auto w-1/2 h-auto rounded-md shadow-lg mt-8" 
+    src="https://www.clarin.com/img/2020/04/18/AzDouE3he_720x0__1.jpg" 
+    alt="Descripción de la imagen 1" 
+    className="w-full h-auto rounded-md shadow-lg" 
   />
+  <img 
+    src="https://cadenaser00.epimg.net/emisora/imagenes/2016/11/22/radio_granada/1479814019_069529_1479814122_noticia_normal.jpg" 
+    alt="Descripción de la imagen 2" 
+    className="w-full h-auto rounded-md shadow-lg" 
+  />
+</div>
+
 </div>
       {/* Seccion 2*/}
       <Footer />
