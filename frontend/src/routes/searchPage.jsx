@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../COMPONENTES/header.jsx";
-import Footer from "../COMPONENTES/footer.jsx";
+import Footer from "../COMPONENTES/footer.jsx"; 
 import ProductCard from "../COMPONENTES/tarjeta.jsx";
+
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +41,7 @@ const SearchPage = () => {
   return (
     <div className="App">
       <Header />
+      
       <div className="container mx-auto p-4 flex">
         <div className="sidebar bg-gray-800 text-white p-4 w-1/4">
           <div className="sidehead">
@@ -116,7 +118,7 @@ const SearchPage = () => {
             )}
           </div>
         </div>
-      </div>
+            </div>
       
    {/*Paginacion previsoria. Falta agregregar funcionalidad*/}
       <nav aria-label="Page navigation example" className="flex justify-center">
@@ -156,68 +158,68 @@ const SearchPage = () => {
   </nav>
  {/*Aca corta.*/}
 
-
+     
       {/*Seccion 2  Simple Grid*/}
-      <section className="bg-white">
+      <section
+        className="bg-cover bg-center min-h-screen"
+        style={{ backgroundImage: `url("https://andaluciaexclusiva.com/wp-content/uploads/2020/05/plazas-que-ver-en-andalucia-1024x683.jpg")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                height: '100%', // Asegura que la sección abarque todo el contenido
+          }}
+        >
+      <div className="h-full flex items-center justify-center">
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Trusted by eCommerce Businesses
+            <h2 className="text-4xl font-bold text-white sm:text-5xl lg:text-6x1">
+              Ven y Suscribete Podras Encontrar Grandes Oportunidades
             </h2>
 
-            <p className="mt-4 text-gray-500 sm:text-xl">
-            Las buenas marcas de e-commerce (comercio electrónico) 
-            implementan al menos una técnica de CRO en las páginas de sus productos. 
-            Utilizan testimonios de clientes, provocan el miedo de los visitantes 
-            a perderse algo (FOMO), hacen recomendaciones de productos, 
-            y así sucesivamente.
-            Excepcionales marcas de e-commerce (comercio electrónico) 
-            combinan estas técnicas y le añaden algo más.
-            </p>
+                <p className="mt-6 text-white text-lg sm:text-2xl lg:text-3x1">
+                "Complejo turístico-comercial" 
+                Es Mucho más que solo un centro comercial, 
+                Sugerimos que es un destino en sí mismo, atractivo tanto para 
+                Su Bello Paisaje lo que te encantara descubrir y de entretenimiento,
+                Planes en familia, Amigos un lugar en donde podrias encontrar un lugar donde quedarte"
+                el lugar ofrece diversas actividades, 
+                lo que explica por qué atrae a una gran cantidad de turistas.
+                </p>
+              </div>
+            </div>
           </div>
+      </section>
 
           <div className="mt-8 sm:mt-12">
             <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
-                <dt className="order-last text-lg font-medium text-gray-500">
-                  Total Sales
-                </dt>
+                <dt className="order-last text-lg font-medium text-gray-500">Total Sales</dt>
 
-                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                Customer Insights
-                </dd>
+                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">Customer</dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
-                <dt className="order-last text-lg font-medium text-gray-500">
-                  EMAIL
-                </dt>
+                <dt className="order-last text-lg font-medium text-gray-500">EMAIL</dt>
 
-                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  SEGMENTACION
-                </dd>
+                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">SEGMENTACION</dd>
               </div>
 
               <div className="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center">
-                <dt className="order-last text-lg font-medium text-gray-500">
-                  OnSite
-                </dt>
+                <dt className="order-last text-lg font-medium text-gray-500">OnSite</dt>
 
-                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                  Glossier
-                </dd>
+                <dd className="text-4xl font-extrabold text-blue-600 md:text-5xl">Glossier</dd>
               </div>
             </dl>
           </div>
-        </div>
-      </section>
+          
+  );
 
-
-      
 
       <Footer />
-    </div>
+      </div>
   );
 };
+    
+  
+
 
 export default SearchPage;
